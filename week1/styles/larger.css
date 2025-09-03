@@ -1,0 +1,80 @@
+/* ============================
+   Tablet breakpoint (≥768px)
+   ============================ */
+@media (min-width: 768px) {
+  /* Header layout */
+  header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+  }
+
+  /* Hide hamburger toggle */
+  #navToggle {
+    display: none;
+  }
+
+  /* Nav switches to horizontal flex */
+  nav {
+    display: block !important;
+    width: auto;
+  }
+  nav ul {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+  nav a {
+    padding: .55rem .75rem;
+  }
+
+  /* Main padding */
+  main {
+    padding-inline: 1.25rem;
+  }
+
+  /* Two-column course cards */
+  .course-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* About-me layout switches to row */
+  .about-me {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+  .about-text p {
+    margin: 0;
+  }
+  .about-photo {
+    flex: 0 0 200px;
+  }
+}
+
+/* ============================
+   Desktop breakpoint (≥1024px)
+   ============================ */
+@media (min-width: 1024px) {
+  /* Constrain main width */
+  main {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+
+  /* Three-up course grid */
+  .course-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Header site-name polish */
+  .site-name {
+    font-size: 1.3rem;
+  }
+}
