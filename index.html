@@ -1,80 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WDD231 - Web Frontend Development 1</title>
-  <meta name="description" content="Home page for WDD231 - Web Frontend Development 1" />
+  <meta name="description" content="Home page for WDD231 - Web Frontend Development 1">
+  <meta name="author" content="Lucky Ayei Inyang Eni">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --text: #e8eaf6;
+      --muted: #a9b1d6;
+      --accent: #4f46e5;
+      --accent-2: #06b6d4;
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --radius: 1.25rem;
+      --gap: 1rem;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.5;
+    }
+    a { color: var(--accent-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-  <!-- Google Fonts Audit Fix -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    /* Header */
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: .5rem;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      background: linear-gradient(180deg, rgba(11,16,32,.95), rgba(11,16,32,.75));
+      backdrop-filter: blur(6px);
+      z-index: 10;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .logo { max-height: 40px; }
+    .site-name { font-weight: 700; font-size: 1.2rem; }
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="styles/small.css">
-  <link rel="stylesheet" href="styles/larger.css">
+    #navToggle {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.15);
+      color: var(--text);
+      border-radius: .75rem;
+      padding: .4rem .6rem;
+      cursor: pointer;
+      font-size: 1.3rem;
+      align-self: flex-end;
+    }
+
+    nav { display: none; width: 100%; }
+    nav.open { display: block; }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: .5rem;
+    }
+    nav a {
+      display: block;
+      padding: .75rem .9rem;
+      border-radius: .6rem;
+      font-weight: 600;
+    }
+    nav a:hover { background: rgba(79,70,229,.15); }
+    nav a.active {
+      background: rgba(6,182,212,.18);
+      border: 1px solid rgba(6,182,212,.35);
+    }
+
+    @media (min-width: 768px) {
+      nav { display: block !important; }
+      #navToggle { display: none; }
+    }
+
+    /* Main */
+    main {
+      width: min(100%, 1100px);
+      margin: 1rem auto;
+      padding: 0 1rem 2rem;
+    }
+    h1 {
+      font-size: clamp(1.6rem, 2.5vw + 1rem, 2.4rem);
+      margin: 1rem 0;
+    }
+
+    /* Subheadings */
+    h2 {
+      margin-top: 2rem;
+      font-size: 1.6rem;
+      color: var(--accent-2);
+      background: linear-gradient(90deg, rgba(79,70,229,.25), rgba(6,182,212,.25));
+      padding: .6rem 1rem;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 6px rgba(0,0,0,.25);
+    }
+
+    /* About Me Layout */
+    .about-me {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    .about-text { flex: 1; text-align: left; }
+    .about-text p { max-width: 600px; margin: 0; color: var(--muted); }
+    .about-photo { flex: 0 0 200px; text-align: center; }
+    .about-photo h3 {
+      margin: 0 0 .5rem;
+      font-size: 1.2rem;
+      color: var(--accent-2);
+    }
+    .about-photo img {
+      border-radius: var(--radius);
+      width: 180px;
+      border: 3px solid var(--accent-2);
+    }
+
+    /* Courses */
+    .filter-buttons {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .filter-btn {
+      border: 1px solid rgba(255,255,255,.12);
+      background: #0e1736;
+      color: var(--text);
+      padding: .5rem .9rem;
+      border-radius: .75rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .filter-btn:hover { border-color: rgba(6,182,212,.6); }
+    .filter-btn.active {
+      background: linear-gradient(90deg, rgba(79,70,229,.6), rgba(6,182,212,.6));
+      border-color: transparent;
+    }
+
+    .course-cards {
+      display: grid;
+      gap: var(--gap);
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+      .course-cards { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (min-width: 1100px) {
+      .course-cards { grid-template-columns: repeat(3,1fr); }
+    }
+
+    .card {
+      background: #0e1736;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .card header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: .25rem;
+      align-items: baseline;
+    }
+    .card h3 { margin: 0; font-size: 1.1rem; }
+    .badge {
+      font-size: .75rem;
+      padding: .25rem .5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      color: var(--muted);
+    }
+    .badge.wdd { background: rgba(79,70,229,.2); }
+    .badge.cse { background: rgba(6,182,212,.2); }
+    .meta { font-size: .9rem; color: var(--muted); margin-bottom: .5rem; }
+    .desc { color: #d9e1ff; margin: .5rem 0 1rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tag {
+      font-size: .72rem;
+      padding: .2rem .5rem;
+      border: 1px dashed rgba(255,255,255,.15);
+      border-radius: .5rem;
+      color: var(--muted);
+    }
+    .card.true {
+      border-color: rgba(34,197,94,.45);
+      background: linear-gradient(180deg, rgba(14,23,54,1), rgba(34,197,94,.12));
+    }
+    .card.true .status {
+      font-size: .8rem;
+      font-weight: 700;
+      color: #86efac;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem 1rem;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    footer a { color: var(--accent-2); }
+  </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
-    <a href="index.html" class="logo-link">
+    <a href="index.html" class="logo-link" aria-label="Homepage">
       <img src="images/logo.png" alt="Site Logo" class="logo">
-      <span class="site-name">WDD231</span>
+      <span class="site-name">LEstudio</span>
     </a>
-    <button id="menu-btn" aria-label="Open navigation" aria-expanded="false">☰</button>
-    <nav id="site-nav">
+    <nav id="primaryNav" aria-label="Primary navigation">
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="#">Courses</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="chamber.html">Chamber Project</a></li>
+        <li><a href="final.html">Final Project</a></li>
       </ul>
     </nav>
+    <button id="navToggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
   </header>
 
-  <!-- Main -->
   <main>
-    <h1>Welcome to WDD231</h1>
-
-    <!-- About Me -->
+    <h1>Home</h1>
+    <!-- About Me Section -->
     <section class="about-me">
       <div class="about-text">
         <h2>About Me</h2>
-        <p>Hello, my name is Lucky Ayei Inyang Eni. I am a frontend web developer passionate about building interactive, user-friendly, and accessible web applications.</p>
+        <p>Hello! My name is <strong>Lucky Ayei Inyang Eni</strong>. I am passionate about web development, programming, and continuous learning. This site showcases my coursework, certifications, and progress as I grow in Web Frontend Development.</p>
       </div>
       <div class="about-photo">
+        <h3>Student Photo</h3>
         <img src="images/student.jpg" alt="Student Photo">
       </div>
     </section>
 
-    <!-- Courses -->
+    <!-- Certificate Section -->
     <section>
-      <h2>My Courses</h2>
+      <h2>Web Certificate Courses</h2>
+      <p>Below are the courses for the <strong>Web and Computer Programming</strong> certificate program. You can filter by category.</p>
+    </section>
+
+    <!-- Courses Section -->
+    <section>
+      <h2>All Courses</h2>
       <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="ALL">All</button>
-        <button class="filter-btn" data-filter="WDD">WDD</button>
-        <button class="filter-btn" data-filter="CSE">CSE</button>
+        <button data-filter="all" class="filter-btn active">All Courses</button>
+        <button data-filter="WDD" class="filter-btn">WDD Courses</button>
+        <button data-filter="CSE" class="filter-btn">CSE Courses</button>
       </div>
-      <div id="courses" class="course-cards"></div>
-      <p class="credit-total">Total Credits: <span id="credit-total">0</span></p>
+      <div id="courseCards" class="course-cards"></div>
+      <p id="creditTotal" class="credit-total"></p>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
+    <p class="social-links">
+      <a href="https://github.com/luckyeni12-eng" target="_blank">GitHub</a> | 
+      <a href="https://linkedin.com/in/luckyeni" target="_blank">LinkedIn</a> | 
+      <a href="https://twitter.com/luckyeni" target="_blank">Twitter</a>
+    </p>
     <p id="copyright"></p>
     <p id="lastModified"></p>
-    <p>
-      <a href="https://linkedin.com/in/lucky-eni" target="_blank">LinkedIn</a> •
-      <a href="https://github.com/luckyeni12-eng" target="_blank">GitHub</a> •
-      <a href="https://twitter.com" target="_blank">Twitter</a>
-    </p>
   </footer>
 
-  <!-- External JS (Audit Fix) -->
-  <script src="scripts/navigation.js"></script>
-  <script src="scripts/date.js"></script>
-  <script src="scripts/course.js"></script>
+  <script>
+    // Responsive Navigation
+    const navToggle = document.getElementById('navToggle');
+    const primaryNav = document.getElementById('primaryNav');
+    navToggle.addEventListener('click', () => {
+      primaryNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', primaryNav.classList.contains('open'));
+    });
+
+    // Footer Dates
+    document.getElementById('copyright').textContent =
+      `© ${new Date().getFullYear()} Lucky Ayei Inyang Eni • Nigeria`;
+    document.getElementById('lastModified').textContent =
+      `Last Modified: ${document.lastModified}`;
+
+    // Course Data
+    const courses = [
+      { subject: 'CSE', number: 110, title: 'Introduction to Programming', credits: 2, certificate: 'Web and Computer Programming', description: 'This course introduces students to programming basics.', technology: ['Python'], true: true },
+      { subject: 'WDD', number: 130, title: 'Web Fundamentals', credits: 2, certificate: 'Web and Computer Programming', description: 'Learn the basics of the web: HTML & CSS.', technology: ['HTML','CSS'], true: true },
+      { subject: 'CSE', number: 111, title: 'Programming with Functions', credits: 2, certificate: 'Web and Computer Programming', description: 'Organize code into functions for reusability.', technology: ['Python'], true: true },
+      { subject: 'CSE', number: 210, title: 'Programming with Classes', credits: 2, certificate: 'Web and Computer Programming', description: 'Object-oriented programming with classes & objects.', technology: ['C#'], true: true },
+      { subject: 'WDD', number: 131, title: 'Dynamic Web Fundamentals', credits: 2, certificate: 'Web and Computer Programming', description: 'Use JavaScript to make interactive websites.', technology: ['HTML','CSS','JavaScript'], true: true },
+      { subject: 'WDD', number: 231, title: 'Frontend Web Development I', credits: 2, certificate: 'Web and Computer Programming', description: 'Focus on UX, accessibility, and performance.', technology: ['HTML','CSS','JavaScript'], true: false },
+    ];
+
+    const courseCards = document.getElementById('courseCards');
+    const creditTotalEl = document.getElementById('creditTotal');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    function render(list) {
+      courseCards.innerHTML = list.map(c => `
+        <article class="card ${c.true ? 'true' : ''}"> 
+          <header>
+            <h3>${c.subject} ${c.number}: ${c.title}</h3>
+            <span class="badge ${c.subject.toLowerCase()}">${c.subject}</span>
+          </header>
+          <div class="meta"><strong>Credits:</strong> ${c.credits} • <strong>Certificate:</strong> ${c.certificate}</div>
+          <p class="desc">${c.description}</p>
+          <div class="tags">${c.technology.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+          ${c.true ? '<p class="status">✓ True</p>' : ''}
+        </article>
+      `).join('');
+      creditTotalEl.textContent =
+        `Total Credits: ${list.reduce((acc, c) => acc + c.credits, 0)}`;
+    }
+
+    function applyFilter(filter) {
+      if (filter === 'WDD') render(courses.filter(c => c.subject === 'WDD'));
+      else if (filter === 'CSE') render(courses.filter(c => c.subject === 'CSE'));
+      else render(courses);
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        applyFilter(btn.dataset.filter);
+      });
+    });
+
+    // Init
+    render(courses);
+  </script>
 </body>
 </html>
