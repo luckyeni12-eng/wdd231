@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta basics -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Greater Nigeria Chamber of Commerce | Member Directory</title>
+  <meta name="description" content="Explore the Greater Nigeria Chamber of Commerce member directory. Discover local businesses, view details, and join the chamber." />
+  <meta name="author" content="Lucky Ayei Inyang Eni - WDD 231" />
+
+  <!-- Open Graph (Facebook) -->
+  <meta property="og:title" content="Greater Nigeria Chamber of Commerce" />
+  <meta property="og:description" content="Explore the Timbuktu Chamber member directory and discover local businesses." />
+  <meta property="og:image" content="images/og-image.png" />
+  <meta property="og:url" content="https://Google.com/wdd231/chamber/directory.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+
+  <!-- CSS (reset BEFORE styles) -->
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <!-- App manifest-like color (optional) -->
+  <meta name="theme-color" content="#0f766e">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a href="directory.html" class="logo" aria-label="Timbuktu Chamber of Commerce Home">
+        <!-- Simple text mark; swap with an inline SVG logo if desired -->
+        <span class="logo-mark">TCC</span>
+        <span class="brand-text">Greater Nigeria Chamber of Commerce</span>
+      </a>
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation">
+        ☰
+      </button>
+    </div>
+
+    <nav id="primaryNav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        <li><a class="active" href="directory.html" aria-current="page">Directory</a></li>
+        <li><a href="join.html">Join</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="mainContent">
+    <section class="hero compact">
+      <h1>Member Directory</h1>
+      <p>Browse chamber members, switch between Grid/List views, and shop local.</p>
+      <div class="view-toggle" role="group" aria-label="Toggle member layout">
+        <button id="gridBtn" class="toggle-btn active" data-view="grid" aria-pressed="true">Grid</button>
+        <button id="listBtn" class="toggle-btn" data-view="list" aria-pressed="false">List</button>
+      </div>
+    </section>
+
+    <section class="directory" aria-live="polite">
+      <div id="memberContainer" class="cards grid"></div>
+      <template id="memberCardTemplate">
+        <article class="card" data-level="">
+          <div class="card-media">
+            <img class="card-logo" src="" alt="" loading="lazy" width="120" height="120">
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"></h2>
+            <p class="card-category"></p>
+            <p class="card-address"></p>
+            <p class="card-phone"></p>
+            <a class="card-link" href="#" target="_blank" rel="noopener">Visit Website</a>
+            <div class="badge" title="Membership level">Member</div>
+          </div>
+        </article>
+      </template>
+      <p id="loadingMsg" class="loading">Loading members…</p>
+      <p id="emptyMsg" class="empty" hidden>No members to display.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <section aria-labelledby="contactHeading">
+        <h3 id="contactHeading">Contact</h3>
+        <ul class="contact-list">
+          <li>Email: <a href="mailto:info@greaternigeriachamber.org">info@greaternigeriahamber.org</a></li>
+          <li>Phone: <a href="tel:+223-555-0123">+223-555-0123</a></li>
+          <li>Address: 1 Market Square, Greater Nigeria</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="aboutHeading">
+        <h3 id="aboutHeading">About</h3>
+        <p>We foster local business growth through networking, advocacy, and community events.</p>
+      </section>
+
+      <section aria-labelledby="devHeading" class="dev-info">
+        <h3 id="devHeading">Developer</h3>
+        <p>&copy; <span id="year"></span> Greater Nigeria Chamber</p>
+        <p>Created by <strong>Lucky Ayei Inyang Eni</strong> — <abbr title="Web Design & Development">WDD</abbr> 231</p>
+        <p>Last modified: <time id="lastModified" datetime=""></time></p>
+      </section>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script defer src="scripts/main.js"></script>
+  <script defer src="scripts/directory.js"></script>
+</body>
+</html>
