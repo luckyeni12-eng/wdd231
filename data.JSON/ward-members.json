@@ -1,0 +1,60 @@
+{
+  "families": [
+    {
+      "familyName": "Johnson",
+      "movedInDate": "2022-03-15",
+      "numberOfMembers": 5,
+      "visitedByBishopric": true,
+      "members": [
+        {
+          "name": "David Johnson",
+          "gender": "Male",
+          "birthdate": "1985-07-12"
+        },
+        {
+          "name": "Emily Johnson",
+          "gender": "Female",
+          "birthdate": "1987-09-30"
+        },
+        {
+          "name": "Sarah Johnson",
+          "gender": "Female",
+          "birthdate": "2010-02-14"
+        },
+        {
+          "name": "Michael Johnson",
+          "gender": "Male",
+          "birthdate": "2013-11-22"
+        },
+        {
+          "name": "Jacob Johnson",
+          "gender": "Male",
+          "birthdate": "2017-05-09"
+        }
+      ]
+    },
+    {
+      "familyName": "Okafor",
+      "movedInDate": "2021-11-01",
+      "numberOfMembers": 3,
+      "visitedByBishopric": false,
+      "members": [
+        {
+          "name": "Chinedu Okafor",
+          "gender": "Male",
+          "birthdate": "1990-01-25"
+        },
+        {
+          "name": "Amaka Okafor",
+          "gender": "Female",
+          "birthdate": "1992-08-19"
+        },
+        {
+          "name": "Ifeanyi Okafor",
+          "gender": "Male",
+          "birthdate": "2018-12-04"
+        }
+      ]
+    }
+  ]
+}
