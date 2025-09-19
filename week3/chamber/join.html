@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eniborah Chamber of Commerce | Join</title>
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a href="index.html" class="logo"><span class="logo-mark">TCC</span><span class="brand-text">Eniborah Chamber</span></a>
+      <button id="navToggle" class="nav-toggle" aria-expanded="false">☰</button>
+    </div>
+    <nav id="primaryNav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        <li><a href="directory.html">Directory</a></li>
+        <li><a class="active" href="join.html">Join</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main style="padding:1rem;max-width:900px;margin-inline:auto">
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Join the Chamber</h1>
+        <p>Become a part of Eniborah’s growing business community.</p>
+      </div>
+    </section>
+    <section style="padding-top:1rem">
+      <h2>Membership Form</h2>
+      <form id="joinForm">
+        <label>Name:<br><input type="text" name="name" required></label><br><br>
+        <label>Email:<br><input type="email" name="email" required></label><br><br>
+        <label>Business Name:<br><input type="text" name="business" required></label><br><br>
+        <label>Membership Level:<br>
+          <select name="level">
+            <option value="1">Member</option>
+            <option value="2">Silver Member</option>
+            <option value="3">Gold Member</option>
+          </select>
+        </label><br><br>
+        <button type="submit" class="cta">Join Now</button>
+      </form>
+      <p id="joinMsg" class="loading" hidden>Submitting…</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <section><h3>Contact</h3><p>Email: info@eniborahchamber.org</p></section>
+      <section><h3>About</h3><p>Fostering business growth in Eniborah.</p></section>
+      <section><h3>Developer</h3><p>&copy;<span id="year"></span> Lucky Ayei Inyang Eni</p></section>
+    </div>
+  </footer>
+  <script defer src="scripts/main.js"></script>
+  <script>
+    // simple demo submit handling
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('joinForm');
+      const msg = document.getElementById('joinMsg');
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        msg.hidden = false;
+        // Demo: show a "thank you" after a pause (replace with real form processing)
+        setTimeout(() => {
+          msg.hidden = true;
+          alert('Thank you — your request has been received (demo).');
+          form.reset();
+        }, 800);
+      });
+    });
+  </script>
+</body>
+</html>

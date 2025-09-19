@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eniborah Chamber of Commerce | Join</title>
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a href="index.html" class="logo"><span class="logo-mark">TCC</span><span class="brand-text">Eniborah Chamber</span></a>
+      <button id="navToggle" class="nav-toggle">☰</button>
+    </div>
+    <nav id="primaryNav" class="primary-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        <li><a href="directory.html">Directory</a></li>
+        <li><a class="active" href="join.html">Join</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Join the Chamber</h1>
+      <p>Become a part of Eniborah’s growing business community.</p>
+    </section>
+    <section>
+      <h2>Membership Form</h2>
+      <form>
+        <label>Name:<br><input type="text" name="name" required></label><br><br>
+        <label>Email:<br><input type="email" name="email" required></label><br><br>
+        <label>Business Name:<br><input type="text" name="business" required></label><br><br>
+        <label>Membership Level:<br>
+          <select name="level">
+            <option value="1">Member</option>
+            <option value="2">Silver Member</option>
+            <option value="3">Gold Member</option>
+          </select>
+        </label><br><br>
+        <button type="submit">Join Now</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <section><h3>Contact</h3><p>Email: info@Eniborahchamber.org</p></section>
+      <section><h3>About</h3><p>Fostering business growth in Eniborah.</p></section>
+      <section><h3>Developer</h3><p>&copy;<span id="year"></span> Lucky Ayei Inyang Eni</p></section>
+    </div>
+  </footer>
+  <script src="scripts/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chamber of Commerce — Join</title>
+  <meta name="description" content="Apply to join the Chamber of Commerce" />
+
+  <style>
+    /* --- Basic layout & site pattern (header/nav/footer) --- */
+    :root{
+      --accent:#0c6;
+      --muted:#666;
+      --card-bg: #fff;
+      --card-border:#e6e6e6;
+      --max-width:1100px;
+      --radius:12px;
+      --shadow: 0 6px 18px rgba(10,10,10,0.06);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    body{
+      margin:0;
+      background: linear-gradient(180deg,#f6f8fb,#ffffff);
+      color:#1a1a1a;
+      line-height:1.4;
+      padding: 24px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .site {
+      width:100%;
+      max-width:var(--max-width);
+      background:transparent;
+    }
+
+    header.site-header, footer.site-footer{
+      background:var(--card-bg);
+      border-radius:10px;
+      padding:14px 18px;
+      box-shadow:var(--shadow);
+      margin-bottom:18px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    header.site-header h1{
+      font-size:1.15rem;
+      margin:0;
+    }
+    nav.site-nav a{
+      margin-right:12px;
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+      font-size:.95rem;
+    }
+
+    /* --- Main content layout: form + membership cards --- */
+    .main {
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    /* On larger screens place cards to right */
+    @media(min-width:900px){
+      .main{
+        grid-template-columns: 1fr 340px;
+      }
+    }
+
+    .panel{
+      background:var(--card-bg);
+      border:1px solid var(--card-border);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .panel h2{ margin-top:0; }
+
+    /* --- Form styles --- */
+    form.join-form{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    label.field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      font-weight:600;
+      font-size:.95rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+      padding:10px 12px;
+      border:1px solid #cfcfcf;
+      border-radius:8px;
+      font-size:1rem;
+      background:white;
+      outline:none;
+    }
+    input:focus, textarea:focus, select:focus {
+      box-shadow:0 0 0 4px rgba(12,150,100,0.08);
+      border-color: var(--accent);
+    }
+    textarea{ min-height:100px; resize:vertical; }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    @media(max-width:480px){
+      .two-col{ grid-template-columns: 1fr; }
+    }
+
+    .submit-row { margin-top:6px; }
+    input[type="submit"]{
+      background: linear-gradient(90deg,var(--accent), #0a9f7a);
+      color:white;
+      border:none;
+      padding:12px 16px;
+      font-size:1rem;
+      font-weight:700;
+      border-radius:10px;
+      cursor:pointer;
+      box-shadow: 0 6px 14px rgba(10,10,10,0.08);
+    }
+    input[type="submit"]:focus { outline:3px solid rgba(12,150,100,0.18); }
+
+    /* --- Membership cards --- */
+    .cards{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .card{
+      border:1px solid var(--card-border);
+      border-radius:10px;
+      padding:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), #fff);
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      transform: translateY(8px);
+      opacity:0;
+      transition: transform .45s ease, opacity .45s ease;
+    }
+
+    /* animation on initial load: we'll add .animate to container to trigger */
+    .cards.animate .card {
+      opacity:1;
+      transform: translateY(0);
+    }
+    .cards.animate .card:nth-child(1){ transition-delay: 0.08s; }
+    .cards.animate .card:nth-child(2){ transition-delay: 0.16s; }
+    .cards.animate .card:nth-child(3){ transition-delay: 0.24s; }
+    .cards.animate .card:nth-child(4){ transition-delay: 0.32s; }
+
+    .card h3 { margin:0; font-size:1rem; }
+    .card p { margin:0; color:var(--muted); font-size:.95rem; }
+    .card .card-actions { margin-top:8px; }
+    .card a.info-link{
+      text-decoration:none;
+      font-weight:700;
+      background:transparent;
+      padding:8px 10px;
+      border-radius:8px;
+      display:inline-block;
+      border:1px solid #e1e1e1;
+    }
+    /* highlight different membership colors subtly */
+    .card.np { border-left:6px solid #6a8; }
+    .card.bronze { border-left:6px solid #b87333; }
+    .card.silver { border-left:6px solid #c0c0c0; }
+    .card.gold { border-left:6px solid #d4af37; }
+
+    /* --- Modal (accessible) --- */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background: rgba(10,10,10,0.45);
+      z-index:1200;
+    }
+    .modal-backdrop.show { display:flex; }
+    .modal{
+      background:white;
+      width:min(680px, 94%);
+      border-radius:12px;
+      padding:18px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+      max-height:80vh;
+      overflow:auto;
+      outline:none;
+    }
+    .modal header{ display:flex; justify-content:space-between; gap:12px; align-items:center; }
+    .modal .close {
+      background:transparent;
+      border:1px solid #e6e6e6;
+      padding:6px 10px;
+      border-radius:8px;
+      cursor:pointer;
+    }
+
+    /* --- small visual helper for form hint --- */
+    .hint{ font-weight:400; font-size:.9rem; color:var(--muted); }
+
+    /* --- footer --- */
+    .content-footer{
+      margin-top:10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:.9rem;
+      color:var(--muted);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="site" id="site">
+    <header class="site-header" role="banner">
+      <div>
+        <strong>Eniborah Chamber</strong>
+        <div class="hint">Uniting local business — Join today</div>
+      </div>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="join.html" aria-current="page">Join</a>
+        <a href="events.html">Events</a>
+      </nav>
+    </header>
+
+    <main class="main" id="main">
+      <!-- JOIN FORM (left column on wide screens) -->
+      <section class="panel" aria-labelledby="join-heading">
+        <h2 id="join-heading">Membership Application</h2>
+        <p class="hint">Please complete the required fields. Accessibility: labels wrap fields to assist screen readers.</p>
+
+        <form class="join-form" method="get" action="thankyou.html" novalidate>
+          <div class="two-col">
+            <label class="field">
+              First name *
+              <input
+                type="text"
+                name="firstName"
+                required
+                title="Applicant's first name"
+                autocomplete="given-name"
+                placeholder="First name"
+                aria-required="true"
+              />
+            </label>
+
+            <label class="field">
+              Last name *
+              <input
+                type="text"
+                name="lastName"
+                required
+                title="Applicant's last name"
+                autocomplete="family-name"
+                placeholder="Last name"
+                aria-required="true"
+              />
+            </label>
+          </div>
+
+          <label class="field">
+            Organizational title (min 7 chars; letters, spaces, hyphens)
+            <input
+              type="text"
+              name="orgTitle"
+              title="Organizational title"
+              autocomplete="organization-title"
+              pattern="^[A-Za-z\s-]{7,}$"
+              placeholder="e.g. Regional Director"
+              aria-describedby="orgTitlePattern"
+            />
+            <div id="orgTitlePattern" class="hint">Allowed: letters, spaces, hyphens. Minimum 7 characters.</div>
+          </label>
+
+          <label class="field">
+            Email address *
+            <input
+              type="email"
+              name="email"
+              required
+              title="Applicant email address"
+              autocomplete="email"
+              placeholder="e.g. jane.doe@example.com"
+              aria-required="true"
+            />
+          </label>
+
+          <label class="field">
+            Mobile phone *
+            <input
+              type="tel"
+              name="mobile"
+              required
+              title="Applicant mobile phone number"
+              autocomplete="tel"
+              placeholder="+234 801 234 5678"
+              aria-required="true"
+            />
+          </label>
+
+          <label class="field">
+            Business / Organization name *
+            <input
+              type="text"
+              name="business"
+              required
+              title="Business or organization name"
+              autocomplete="organization"
+              placeholder="Your business name"
+              aria-required="true"
+            />
+          </label>
+
+          <label class="field">
+            Membership level
+            <!-- radio buttons allow keyboard selection and show current choice clearly -->
+            <div role="radiogroup" aria-labelledby="membership-label">
+              <div id="membership-label" class="hint">Choose one membership level</div>
+              <label style="font-weight:600;">
+                <input type="radio" name="membership" value="NP" checked /> NP Membership (Non-Profit — no fee)
+              </label>
+              <label style="font-weight:600;">
+                <input type="radio" name="membership" value="Bronze" /> Bronze Membership
+              </label>
+              <label style="font-weight:600;">
+                <input type="radio" name="membership" value="Silver" /> Silver Membership
+              </label>
+              <label style="font-weight:600;">
+                <input type="radio" name="membership" value="Gold" /> Gold Membership
+              </label>
+            </div>
+          </label>
+
+          <label class="field">
+            Business / Organization description
+            <textarea name="description" title="Describe your business or organization" placeholder="Tell us about your organization"></textarea>
+          </label>
+
+          <!-- hidden timestamp -->
+          <input type="hidden" name="timestamp" id="timestamp" />
+
+          <div class="submit-row">
+            <input type="submit" value="Apply for Membership" />
+          </div>
+        </form>
+
+        <div class="content-footer">
+          <div class="hint">Fields marked * are required</div>
+          <div class="hint">We respect your privacy.</div>
+        </div>
+      </section>
+
+      <!-- MEMBERSHIP CARDS (right column on large, below on small) -->
+      <aside class="panel" aria-labelledby="levels-heading">
+        <h2 id="levels-heading">Membership Levels</h2>
+        <p class="hint">Click "More" for benefits. These cards animate on initial load to draw attention.</p>
+
+        <div class="cards" id="membershipCards" aria-live="polite">
+          <article class="card np" id="card-np">
+            <h3>NP Membership</h3>
+            <p>No fee — for registered non-profits. Core benefits: networking, volunteer collaboration, event invites.</p>
+            <div class="card-actions">
+              <a href="#" class="info-link" data-modal="modal-np">More</a>
+            </div>
+          </article>
+
+          <article class="card bronze" id="card-bronze">
+            <h3>Bronze Membership</h3>
+            <p>Entry-level paid membership — benefits include event access and local directory listing.</p>
+            <div class="card-actions">
+              <a href="#" class="info-link" data-modal="modal-bronze">More</a>
+            </div>
+          </article>
+
+          <article class="card silver" id="card-silver">
+            <h3>Silver Membership</h3>
+            <p>Includes Bronze benefits plus training discounts and enhanced directory spotlight.</p>
+            <div class="card-actions">
+              <a href="#" class="info-link" data-modal="modal-silver">More</a>
+            </div>
+          </article>
+
+          <article class="card gold" id="card-gold">
+            <h3>Gold Membership</h3>
+            <p>All Silver benefits plus premium promotion, feature spots on home page, and VIP events.</p>
+            <div class="card-actions">
+              <a href="#" class="info-link" data-modal="modal-gold">More</a>
+            </div>
+          </article>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div>© Eniborah Chamber of Commerce</div>
+      <nav aria-label="Footer">
+        <a href="privacy.html">Privacy</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </footer>
+  </div>
+
+  <!-- --- Modals for membership benefits --- -->
+  <!-- NP -->
+  <div class="modal-backdrop" id="modal-np-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-np-title" tabindex="-1">
+      <header>
+        <h3 id="modal-np-title">NP Membership — Benefits</h3>
+        <button class="close" data-close>&times; Close</button>
+      </header>
+      <div>
+        <p>NP Membership is free for qualifying non-profit organizations. Benefits include:</p>
+        <ul>
+          <li>Networking & volunteer matching</li>
+          <li>Invitations to community events</li>
+          <li>Access to basic training workshops</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bronze -->
+  <div class="modal-backdrop" id="modal-bronze-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-bronze-title" tabindex="-1">
+      <header>
+        <h3 id="modal-bronze-title">Bronze Membership — Benefits</h3>
+        <button class="close" data-close>&times; Close</button>
+      </header>
+      <div>
+        <p>Bronze members receive:</p>
+        <ul>
+          <li>Listing in our business directory</li>
+          <li>Access to member-only events</li>
+          <li>Discounted event tickets</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Silver -->
+  <div class="modal-backdrop" id="modal-silver-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-silver-title" tabindex="-1">
+      <header>
+        <h3 id="modal-silver-title">Silver Membership — Benefits</h3>
+        <button class="close" data-close>&times; Close</button>
+      </header>
+      <div>
+        <p>Silver members receive Bronze benefits plus:</p>
+        <ul>
+          <li>Training discounts and workshops</li>
+          <li>Featured directory spot</li>
+          <li>Opportunities to sponsor events</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gold -->
+  <div class="modal-backdrop" id="modal-gold-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-gold-title" tabindex="-1">
+      <header>
+        <h3 id="modal-gold-title">Gold Membership — Benefits</h3>
+        <button class="close" data-close>&times; Close</button>
+      </header>
+      <div>
+        <p>Gold members enjoy premium benefits:</p>
+        <ul>
+          <li>Premium home-page spotlight & advertising</li>
+          <li>VIP access to events and private networking</li>
+          <li>Customized training & partnership opportunities</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Set timestamp when the page loads (current date/time) into hidden field
+    document.addEventListener('DOMContentLoaded', function () {
+      const ts = new Date();
+      // ISO format with timezone offset for clarity
+      const iso = ts.toISOString(); // e.g. 2025-09-19T09:30:00.000Z
+      const local = ts.toLocaleString(); // human readable
+      const field = document.getElementById('timestamp');
+      if (field) field.value = iso;
+
+      // Trigger the subtle animation for membership cards
+      const cards = document.getElementById('membershipCards');
+      // slight delay to allow paint and show transition
+      setTimeout(() => {
+        cards.classList.add('animate');
+      }, 80);
+
+      // Modal open/close wiring
+      const links = document.querySelectorAll('.info-link[data-modal]');
+      links.forEach(link => {
+        link.addEventListener('click', openModalFromLink);
+      });
+
+      const closeButtons = document.querySelectorAll('[data-close]');
+      closeButtons.forEach(btn => btn.addEventListener('click', closeModalFromButton));
+
+      // Close on backdrop click
+      document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+        backdrop.addEventListener('click', function (e) {
+          // only close when clicking the backdrop, not inside modal content
+          if (e.target === backdrop) closeBackdrop(backdrop);
+        });
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.modal-backdrop.show').forEach(backdrop => {
+            closeBackdrop(backdrop);
+          });
+        }
+      });
+
+      // focus management: return focus to triggering link when modal closes
+      let lastTrigger = null;
+      function openModalFromLink(e) {
+        e.preventDefault();
+        const modalId = this.getAttribute('data-modal'); // e.g. modal-np
+        const bd = document.getElementById(modalId + '-backdrop');
+        if (!bd) return;
+        lastTrigger = this;
+        openBackdrop(bd);
+      }
+      function openBackdrop(backdrop) {
+        backdrop.classList.add('show');
+        backdrop.setAttribute('aria-hidden', 'false');
+        const dialog = backdrop.querySelector('.modal');
+        if (dialog) dialog.focus({preventScroll:true});
+      }
+      function closeBackdrop(backdrop) {
+        backdrop.classList.remove('show');
+        backdrop.setAttribute('aria-hidden', 'true');
+        // return focus
+        if (lastTrigger && typeof lastTrigger.focus === 'function') lastTrigger.focus();
+      }
+      function closeModalFromButton(e) {
+        const bd = e.target.closest('.modal-backdrop');
+        if (bd) closeBackdrop(bd);
+      }
+
+      // Small client-side validation UX for orgTitle pattern
+      const orgTitle = document.querySelector('input[name="orgTitle"]');
+      if (orgTitle) {
+        orgTitle.addEventListener('input', function () {
+          const patt = new RegExp(this.getAttribute('pattern'));
+          if (this.value === '' || patt.test(this.value)) {
+            this.setCustomValidity('');
+          } else {
+            this.setCustomValidity('Only letters, spaces, hyphens allowed. Minimum 7 characters.');
+          }
+        });
+      }
+
+      // Ensure keyboard tab order: form fields appear first in DOM, then cards.
+      // No extra JS needed because DOM order is correct.
+
+    });
+  </script>
+</body>
+</html>

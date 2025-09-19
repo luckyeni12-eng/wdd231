@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Thank You — Eniborah Chamber</title>
+  <meta name="description" content="Thank you for applying to join." />
+  <style>
+    :root{
+      --card-bg:#fff;
+      --muted:#666;
+      --accent:#0c6;
+      --radius:12px;
+      --shadow: 0 10px 26px rgba(10,10,10,0.08);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    body{
+      margin:0;
+      padding:32px;
+      background: linear-gradient(180deg,#fdfefe,#f4fbf8);
+      display:flex;
+      justify-content:center;
+      color:#111;
+    }
+    .container{
+      width:100%;
+      max-width:820px;
+    }
+    .panel{
+      background:var(--card-bg);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+      border:1px solid #eee;
+    }
+    h1{ margin-top:0; }
+    .summary{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+    .field {
+      background:#f9f9fb;
+      border-radius:8px;
+      padding:10px 12px;
+      border:1px solid #f0f0f3;
+    }
+    .label { font-weight:700; font-size:.95rem; color:var(--muted); }
+    .value { font-size:1.02rem; margin-top:6px; }
+
+    .actions { margin-top:14px; display:flex; gap:10px; align-items:center; }
+    a.button{
+      text-decoration:none;
+      background: linear-gradient(90deg,var(--accent), #0a9f7a);
+      color:white;
+      padding:10px 12px;
+      border-radius:9px;
+      font-weight:700;
+    }
+    .note { color:var(--muted); font-size:.95rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="panel" aria-labelledby="thank-heading">
+      <h1 id="thank-heading">Thank you for applying!</h1>
+      <p class="note">We've received your membership application. Below is the information you submitted (required fields):</p>
+
+      <div id="summary" class="summary" aria-live="polite">
+        <!-- JS will populate required fields here -->
+      </div>
+
+      <div class="actions">
+        <a href="join.html" class="button">Return to form</a>
+        <a href="index.html" class="hint">Back to home</a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Parse URL query parameters and display required fields:
+    // required: firstName, lastName, email, mobile, business, timestamp
+
+    function safeText(text){
+      if (text === null || text === undefined || text === '') return '<em>(not provided)</em>';
+      // Basic encode to avoid HTML injection
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+      const params = new URLSearchParams(window.location.search);
+
+      const fields = [
+        { key: 'firstName', label: 'First name' },
+        { key: 'lastName', label: 'Last name' },
+        { key: 'email', label: 'Email address' },
+        { key: 'mobile', label: 'Mobile phone' },
+        { key: 'business', label: 'Business / Organization' },
+        { key: 'timestamp', label: 'Submitted (timestamp)' }
+      ];
+
+      const container = document.getElementById('summary');
+
+      fields.forEach(f => {
+        let raw = params.get(f.key);
+        if (f.key === 'timestamp' && raw) {
+          // try to show both ISO and local time
+          try {
+            const dt = new Date(raw);
+            if (!isNaN(dt.valueOf())) {
+              raw = dt.toString() + ' (ISO: ' + dt.toISOString() + ')';
+            }
+          } catch(e) { /* ignore */ }
+        }
+        const div = document.createElement('div');
+        div.className = 'field';
+        div.innerHTML = '<div class="label">' + f.label + '</div>'
+                      + '<div class="value">' + safeText(raw) + '</div>';
+        container.appendChild(div);
+      });
+
+      // If none of the required fields were present (user visited page directly), show helpful message
+      const anyPresent = fields.some(f => params.get(f.key));
+      if (!anyPresent) {
+        const msg = document.createElement('div');
+        msg.className = 'field';
+        msg.innerHTML = '<div class="label">No submission detected</div><div class="value">It looks like you opened this page directly. Please fill out the <a href="join.html">membership form</a>.</div>';
+        container.appendChild(msg);
+      }
+    });
+  </script>
+</body>
+</html>

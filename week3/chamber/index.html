@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eniborah Chamber of Commerce | Home</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">TCC</span>
+        <span class="brand-text">Eniborah Chamber</span>
+      </a>
+      <button id="navToggle" class="nav-toggle" aria-expanded="false">☰</button>
+    </div>
+    <nav id="primaryNav" class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="discover.html">Discover</a></li>
+        <li><a href="directory.html">Directory</a></li>
+        <li><a href="join.html">Join</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Welcome to Eniborah Chamber of Commerce</h1>
+        <p>Connecting businesses, fostering growth, and building community.</p>
+        <a class="cta" href="join.html">Join the Chamber</a>
+
+        <div class="events" aria-label="Upcoming events">
+          <strong style="margin-right:.5rem">Upcoming:</strong>
+          <span>Annual Business Expo — Oct 12, 2025</span>
+          <span>•</span>
+          <span>Small Business Workshop — Nov 5, 2025</span>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:1rem;">
+      <div style="max-width:1200px;margin-inline:auto;display:grid;gap:1rem">
+        <div style="display:grid;grid-template-columns:1fr;gap:1rem">
+          <article>
+            <h2>Local Events & News</h2>
+            <p class="muted">Sign up for our newsletter to get updates about local events and member offers.</p>
+          </article>
+
+          <!-- WEATHER SECTION -->
+          <article>
+            <h2>🌦 Weather in Lagos</h2>
+            <div id="weatherBox" style="max-width:600px"></div>
+          </article>
+
+          <article>
+            <h2>Member Spotlights</h2>
+            <div id="spotlightContainer" class="spotlight-grid" aria-live="polite"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <section>
+        <h3>Contact</h3>
+        <p>Email: info@eniborahchamber.org</p>
+      </section>
+      <section>
+        <h3>About</h3>
+        <p>Fostering business growth in Eniborah.</p>
+      </section>
+      <section class="dev-info">
+        <h3>Developer</h3>
+        <p>&copy;<span id="year"></span> Lucky Ayei Inyang Eni</p>
+      </section>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // ----------------- SPOTLIGHTS -----------------
+    const spotlightContainer = document.getElementById('spotlightContainer');
+
+    function pickSpotlights(members) {
+      const candidates = members.filter(m => m.membershipLevel === 2 || m.membershipLevel === 3);
+      if (candidates.length === 0) return [];
+      for (let i = candidates.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+      }
+      const count = Math.min(candidates.length, (Math.random() < 0.5 ? 2 : 3));
+      return candidates.slice(0, count);
+    }
+
+    if (spotlightContainer) {
+      fetch('members.json')
+        .then(r => r.json())
+        .then(members => {
+          const spots = pickSpotlights(members);
+          spotlightContainer.innerHTML = '';
+          if (spots.length === 0) {
+            spotlightContainer.innerHTML = '<p class="loading">No spotlight members available.</p>';
+            return;
+          }
+          spots.forEach(m => {
+            const el = document.createElement('article');
+            el.className = 'spot-card';
+            el.innerHTML = `
+              <img class="logo" src="${m.logo || 'images/placeholder.png'}" alt="${m.name} logo" loading="lazy">
+              <h3>${m.name}</h3>
+              <p>${m.category} • ${m.address}</p>
+              <p class="muted">${m.phone}</p>
+              <div class="spot-actions">
+                <a class="cta" href="${m.website}" target="_blank" rel="noopener">Visit</a>
+                <span class="badge">${m.membershipLevel === 3 ? 'Gold' : 'Silver'}</span>
+              </div>
+            `;
+            spotlightContainer.appendChild(el);
+          });
+        })
+        .catch(err => {
+          spotlightContainer.innerHTML = '<p class="loading">Could not load spotlights.</p>';
+          console.error(err);
+        });
+    }
+
+    // ----------------- WEATHER -----------------
+    const OWM_API_KEY = "25a6c3a30d10acf7cb6a5758357bd427"; // ✅ clean key (no stray apostrophe)
+    const city = "Lagos";
+    const weatherBox = document.getElementById('weatherBox');
+
+    if (weatherBox) {
+      if (!OWM_API_KEY) {
+        weatherBox.innerHTML = `
+          <p class="loading">Weather unavailable — add your OpenWeatherMap API key.</p>
+        `;
+        return;
+      }
+
+      const currentUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${OWM_API_KEY}`;
+      const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${OWM_API_KEY}`;
+
+      Promise.all([fetch(currentUrl), fetch(forecastUrl)])
+        .then(async ([currRes, forecastRes]) => {
+          if (!currRes.ok || !forecastRes.ok) throw new Error("Weather fetch failed");
+          const currentData = await currRes.json();
+          const forecastData = await forecastRes.json();
+
+          const currTemp = Math.round(currentData.main.temp);
+          const currDesc = currentData.weather[0].description;
+
+          let html = `
+            <p><strong>Current Temperature:</strong> ${currTemp}°C</p>
+            <p><strong>Current Conditions:</strong> ${currDesc}</p>
+            <h4>📅 3-Day Forecast</h4>
+            <ul>
+          `;
+
+          const forecastList = forecastData.list.filter(item => item.dt_txt.includes("12:00:00"));
+          forecastList.slice(0, 3).forEach(item => {
+            const date = new Date(item.dt * 1000);
+            const dayName = date.toLocaleDateString(undefined, { weekday: 'long' });
+            const temp = Math.round(item.main.temp);
+            const desc = item.weather[0].main;
+            html += `<li>${dayName}: ${temp}°C (${desc})</li>`;
+          });
+
+          html += "</ul>";
+          weatherBox.innerHTML = html;
+        })
+        .catch(err => {
+          console.error(err);
+          weatherBox.innerHTML = `<p class="loading">Unable to load weather data.</p>`;
+        });
+    }
+  });
+  </script>
+</body>
+</html>

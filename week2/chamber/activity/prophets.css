@@ -1,0 +1,86 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page background with bright gradient */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header & Footer */
+header, footer {
+  text-align: center;
+  padding: 1rem;
+  background: #1565c0; /* Deep blue */
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+h1 {
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+/* Cards layout */
+#cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+/* Each card */
+#cards section {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  border: 3px solid #bbdefb;
+}
+
+#cards section:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+  border-color: #64b5f6;
+  background: linear-gradient(180deg, #ffffff, #f0f9ff);
+}
+
+/* Prophet image */
+#cards img {
+  border-radius: 10px;
+  margin-top: 0.8rem;
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Prophet name */
+#cards h2 {
+  font-size: 1.4rem;
+  color: #1565c0;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+/* Prophet details */
+#cards p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+footer {
+  margin-top: auto;
+}

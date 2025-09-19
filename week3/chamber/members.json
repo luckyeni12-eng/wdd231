@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Dangote Group",
+    "address": "Marina, Lagos, Nigeria",
+    "phone": "+234-01-700-0000",
+    "website": "https://www.dangote.com/",
+    "logo": "images/dangote.png",
+    "membershipLevel": 3,
+    "category": "Conglomerate",
+    "founded": 1981,
+    "description": "Diversified African industrial group with interests in cement, sugar, salt, and more."
+  },
+  {
+    "name": "Access Bank PLC",
+    "address": "Plot 999c Danmole St, Off Adeola Odeku, Victoria Island, Lagos",
+    "phone": "+234-01-271-2005",
+    "website": "https://www.accessbankplc.com/",
+    "logo": "images/accessbank.png",
+    "membershipLevel": 1,
+    "category": "Banking & Finance",
+    "founded": 1989,
+    "description": "One of Nigeria's leading banks with regional presence across Africa."
+  },
+  {
+    "name": "Guaranty Trust Bank (GTBank)",
+    "address": "635 Akin Adesola St, Victoria Island, Lagos",
+    "phone": "+234-01-448-0000",
+    "website": "https://www.gtbank.com/",
+    "logo": "images/gtbank.png",
+    "membershipLevel": 2,
+    "category": "Banking & Finance",
+    "founded": 1990,
+    "description": "Financial services provider offering retail and corporate banking solutions."
+  },
+  {
+    "name": "Interswitch",
+    "address": "1648C Oko Awo St, Victoria Island, Lagos",
+    "phone": "+234-01-906-5000",
+    "website": "https://www.interswitchgroup.com/",
+    "logo": "images/interswitch.png",
+    "membershipLevel": 3,
+    "category": "Fintech / Payments",
+    "founded": 2002,
+    "description": "Integrated digital payments and commerce company powering payments in Africa."
+  },
+  {
+    "name": "Local Bakery Ltd",
+    "address": "12 Market Road, Eniborah",
+    "phone": "+223-555-1001",
+    "website": "https://example.com/localbakery",
+    "logo": "images/bakery.png",
+    "membershipLevel": 2,
+    "category": "Food & Beverage",
+    "founded": 2008,
+    "description": "Fresh baked goods daily — community favorite."
+  },
+  {
+    "name": "GreenLeaf Consultants",
+    "address": "45 Business Park, Eniborah",
+    "phone": "+223-555-1212",
+    "website": "https://example.com/greenleaf",
+    "logo": "images/greenleaf.png",
+    "membershipLevel": 1,
+    "category": "Consulting",
+    "founded": 2015,
+    "description": "Small-business strategy and operations consultants."
+  }
+]
