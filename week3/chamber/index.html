@@ -38,31 +38,35 @@
         <p>Connecting businesses, fostering growth, and building community.</p>
         <a class="cta" href="join.html">Join the Chamber</a>
 
-        <div class="events" aria-label="Upcoming events">
+        <!-- Fixed: use section + heading instead of aria-label on div -->
+        <section class="events">
+          <h2 class="visually-hidden">Upcoming Events</h2>
           <strong style="margin-right:.5rem">Upcoming:</strong>
           <span>Annual Business Expo — Oct 12, 2025</span>
           <span>•</span>
           <span>Small Business Workshop — Nov 5, 2025</span>
-        </div>
+        </section>
       </div>
     </section>
 
+    <!-- Fixed: added accessible heading -->
     <section style="padding:1rem;">
+      <h2 class="visually-hidden">Chamber Highlights</h2>
       <div style="max-width:1200px;margin-inline:auto;display:grid;gap:1rem">
         <div style="display:grid;grid-template-columns:1fr;gap:1rem">
           <article>
-            <h2>Local Events & News</h2>
+            <h3>Local Events & News</h3>
             <p class="muted">Sign up for our newsletter to get updates about local events and member offers.</p>
           </article>
 
           <!-- WEATHER SECTION -->
           <article>
-            <h2>🌦 Weather in Lagos</h2>
+            <h3>🌦 Weather in Lagos</h3>
             <div id="weatherBox" style="max-width:600px"></div>
           </article>
 
           <article>
-            <h2>Member Spotlights</h2>
+            <h3>Member Spotlights</h3>
             <div id="spotlightContainer" class="spotlight-grid" aria-live="polite"></div>
           </article>
         </div>
@@ -119,7 +123,7 @@
             el.className = 'spot-card';
             el.innerHTML = `
               <img class="logo" src="${m.logo || 'images/placeholder.png'}" alt="${m.name} logo" loading="lazy">
-              <h3>${m.name}</h3>
+              <h4>${m.name}</h4>
               <p>${m.category} • ${m.address}</p>
               <p class="muted">${m.phone}</p>
               <div class="spot-actions">
@@ -137,7 +141,7 @@
     }
 
     // ----------------- WEATHER -----------------
-    const OWM_API_KEY = "25a6c3a30d10acf7cb6a5758357bd427"; // ✅ clean key (no stray apostrophe)
+    const OWM_API_KEY = "25a6c3a30d10acf7cb6a5758357bd427"; 
     const city = "Lagos";
     const weatherBox = document.getElementById('weatherBox');
 
