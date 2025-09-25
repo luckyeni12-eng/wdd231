@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Chamber of Commerce — Join</title>
-  <meta name="description" content="Apply to join the Chamber of Commerce" />
-  <meta name="author" content="Your Name" />
+  <meta name="description" content="Apply to join the Chamber of Commerce">
+  <meta name="author" content="Lucky Ayei Inyang Eni">
 
   <!-- Favicon -->
-  <link rel="icon" href="images/favicon.ico" />
+  <link rel="icon" href="images/favicon.ico">
 
   <!-- Open Graph Meta -->
-  <meta property="og:title" content="Chamber of Commerce — Join" />
-  <meta property="og:description" content="Apply to become a member of the Chamber of Commerce. Choose a membership level that fits your organization and gain access to resources, events, and networking opportunities." />
-  <meta property="og:image" content="images/chamber-og.jpg" />
-  <meta property="og:url" content="https://yourdomain.com/join.html" />
+  <meta property="og:title" content="Chamber of Commerce — Join">
+  <meta property="og:description" content="Apply to become a member of the Chamber of Commerce. Choose a membership level that fits your organization and gain access to resources, events, and networking opportunities.">
+  <meta property="og:image" content="images/chamber-og.jpg">
+  <meta property="og:url" content="https://luckyeni12-eng.github.io/wdd231/chamber/join.html">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles/reset.css" />
-  <link rel="stylesheet" href="styles/styles.css" />
-  <link rel="stylesheet" href="styles/join.css" />
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/join.css">
 </head>
 <body>
-  <header class="site-header" role="banner">
+  <header class="site-header">
     <div class="brand">
       <div class="logo">
         <div class="logo-mark" aria-hidden="true">C</div>
@@ -34,7 +34,7 @@
       <button class="nav-toggle" aria-expanded="false" aria-controls="primaryNav">Menu</button>
     </div>
 
-    <nav id="primaryNav" class="primary-nav" role="navigation" aria-label="Primary">
+    <nav id="primaryNav" class="primary-nav" aria-label="Primary">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="directory.html">Directory</a></li>
@@ -45,14 +45,15 @@
   </header>
 
   <!-- Hero -->
-  <section class="hero compact" role="region" aria-labelledby="joinHeading">
+  <section class="hero compact" aria-labelledby="joinHeading">
+    <h2 id="joinHeading" class="visually-hidden">Join the Chamber</h2>
     <div class="directory hero-container">
       <p>Complete the application below to join the chamber. Required fields will appear on the confirmation page.</p>
     </div>
   </section>
 
   <!-- Main -->
-  <main class="site-main" role="main" aria-labelledby="joinHeadingMain">
+  <main class="site-main" aria-labelledby="joinHeadingMain">
     <h1 id="joinHeadingMain">Chamber of Commerce — Join</h1>
 
     <div class="layout">
@@ -65,57 +66,52 @@
           <div class="row two">
             <label class="field">
               <span>First name <span aria-hidden="true" class="required">*</span></span>
-              <input type="text" name="firstName" id="firstName" title="Applicant first name" autocomplete="given-name" required />
+              <input type="text" name="firstName" id="firstName" title="Applicant first name" autocomplete="given-name" required>
             </label>
-
             <label class="field">
               <span>Last name <span aria-hidden="true" class="required">*</span></span>
-              <input type="text" name="lastName" id="lastName" title="Applicant last name" autocomplete="family-name" required />
+              <input type="text" name="lastName" id="lastName" title="Applicant last name" autocomplete="family-name" required>
             </label>
           </div>
 
           <!-- Org Title -->
           <label class="field">
             <span>Organizational title</span>
-            <input
-              type="text"
-              name="orgTitle"
-              id="orgTitle"
-              title="Your title within the organization. Minimum 7 characters; letters, hyphens and spaces only."
-              autocomplete="organization-title"
-              pattern="[A-Za-z\s\-]{7,}"
-              placeholder="e.g. Communications Director"
-              aria-describedby="orgTitleHelp"
-            />
+            <input type="text" name="orgTitle" id="orgTitle" 
+              title="Your title within the organization. Minimum 7 characters; letters, hyphens and spaces only." 
+              autocomplete="organization-title" 
+              pattern="[A-Za-z\s\-]{7,}" 
+              placeholder="e.g. Communications Director" 
+              aria-describedby="orgTitleHelp">
             <small id="orgTitleHelp" class="help-text">Only letters, spaces, or hyphens. Minimum 7 characters.</small>
           </label>
 
           <!-- Email -->
           <label class="field">
             <span>Email address <span aria-hidden="true" class="required">*</span></span>
-            <input type="email" name="email" id="email" title="Email address" autocomplete="email" required placeholder="name@example.com" />
+            <input type="email" name="email" id="email" title="Email address" autocomplete="email" required placeholder="name@example.com">
           </label>
 
           <!-- Mobile phone -->
           <label class="field">
             <span>Mobile phone <span aria-hidden="true" class="required">*</span></span>
-            <input type="tel" name="phone" id="phone" title="Mobile phone number" autocomplete="tel" required placeholder="+234 800 000 0000" />
+            <input type="tel" name="phone" id="phone" title="Mobile phone number" autocomplete="tel" required placeholder="+234 800 000 0000">
           </label>
 
           <!-- Business name -->
           <label class="field">
             <span>Business / Organization name <span aria-hidden="true" class="required">*</span></span>
-            <input type="text" name="business" id="business" title="Your business or organization name" autocomplete="organization" required />
+            <input type="text" name="business" id="business" title="Your business or organization name" autocomplete="organization" required>
           </label>
 
           <!-- Membership selection -->
           <fieldset class="membership-fieldset">
             <legend>Membership level</legend>
-            <div class="membership-options" role="radiogroup">
-              <label><input type="radio" name="membership" value="NP Membership" checked /> NP Membership <span class="badge-np">No fee</span></label>
-              <label><input type="radio" name="membership" value="Bronze Membership" /> Bronze Membership</label>
-              <label><input type="radio" name="membership" value="Silver Membership" /> Silver Membership</label>
-              <label><input type="radio" name="membership" value="Gold Membership" /> Gold Membership</label>
+            <div class="membership-options">
+              <label><input type="radio" name="membership" value="NP Membership" checked> NP Membership <span class="badge-np">No fee</span></label>
+              <label><input type="radio" name="membership" value="Bronze Membership"> Bronze Membership</label>
+              <label><input type="radio" name="membership" value="Silver Membership"> Silver Membership</label>
+              <label><input type="radio" name="membership" value="Gold Membership"> Gold Membership</label>
             </div>
           </fieldset>
 
@@ -126,10 +122,10 @@
           </label>
 
           <!-- Hidden timestamp -->
-          <input type="hidden" name="timestamp" id="timestamp" />
+          <input type="hidden" name="timestamp" id="timestamp">
 
           <div class="submit-row">
-            <input type="submit" value="Submit application" aria-label="Submit application" />
+            <input type="submit" value="Submit application" aria-label="Submit application">
           </div>
         </form>
       </section>
@@ -137,7 +133,6 @@
       <!-- Cards panel -->
       <aside class="cards-panel" aria-labelledby="levelsHeading">
         <h3 id="levelsHeading">Membership Levels</h3>
-
         <div class="membership-cards" id="membershipCards">
           <!-- Membership cards remain same -->
         </div>
@@ -145,10 +140,7 @@
     </div>
   </main>
 
-  <!-- Modals -->
-  <!-- (leave as is, no inline styles) -->
-
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="footer-grid">
       <div>
         <h3>Eniborah Chamber</h3>
