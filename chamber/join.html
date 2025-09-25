@@ -5,178 +5,398 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Chamber of Commerce — Join</title>
   <meta name="description" content="Apply to join the Chamber of Commerce" />
+  <!-- Link to provided styles -->
+  <link rel="stylesheet" href="styles/reset.css" />
+  <link rel="stylesheet" href="styles/styles.css" />
+  <style>
+    /* Page-specific layout for join page */
+    main.site-main {
+      max-width: 1100px;
+      margin: 1.25rem auto;
+      padding: 1rem;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    .form-area {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      padding: 1rem;
+      border-radius: .75rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .layout {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width:920px){
+      .layout{ grid-template-columns: 1fr 360px; align-items: start; }
+    }
 
-  <!-- External CSS files -->
-  <link rel="stylesheet" href="styles/reset.css">
-  <link rel="stylesheet" href="styles/styles.css">
+    /* Form styling */
+    form#joinForm { display: grid; gap: .75rem; }
+    label.field {
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+      font-size: .95rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: .6rem .7rem;
+      border-radius: .5rem;
+      color: var(--text);
+      outline: none;
+    }
+    input:focus, textarea:focus, select:focus {
+      box-shadow: 0 0 0 3px rgba(15,118,110,.12);
+      border-color: var(--accent);
+    }
+    .row { display: grid; gap: .75rem; grid-template-columns: 1fr; }
+    @media (min-width:720px){ .row.two { grid-template-columns: 1fr 1fr; } }
+
+    /* Membership cards area */
+    .cards-panel {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+    .membership-cards {
+      display: grid;
+      gap: .75rem;
+      grid-template-columns: 1fr;
+    }
+    .membership-card {
+      padding: .9rem;
+      border-radius: .75rem;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.01), rgba(0,0,0,.02));
+      transform: translateY(8px);
+      opacity: 0;
+      animation: cardIn .6s forwards;
+      /* We will stagger using inline style animation-delay */
+    }
+    .membership-card h4 { margin: 0 0 .25rem; }
+    .membership-card p { margin: 0 0 .5rem; color: var(--muted); font-size: .92rem; }
+    .membership-card a.info-link {
+      display:inline-block; padding:.45rem .65rem; border-radius:.5rem; border:1px solid var(--accent);
+      text-decoration:none;
+    }
+    .membership-card a.info-link:focus { box-shadow: 0 0 0 4px rgba(34,197,94,.12); }
+
+    @keyframes cardIn {
+      from { transform: translateY(18px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    /* subtle highlight for NP (no fee) */
+    .badge-np {
+      display:inline-block; padding:.25rem .5rem; border-radius:.45rem; margin-left:.5rem;
+      background: linear-gradient(145deg, #dbeafe, #d1fae5); color: #072a28; font-weight:600;
+    }
+
+    /* Modal styling (dialog fallback) */
+    dialog.modal {
+      border: none;
+      border-radius: .75rem;
+      padding: 1rem;
+      width: min(520px, 92%);
+      background: linear-gradient(180deg, var(--panel), rgba(0,0,0,.02));
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+    .modal h3 { margin-top: 0; }
+    .modal .close-btn {
+      margin-top: 1rem;
+      padding:.5rem .8rem;
+      border-radius:.6rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    /* Note: ensure good tab order: form inputs first, membership radios next */
+    .membership-options { display: grid; gap:.5rem; margin-top:.5rem; }
+    .submit-row { display:flex; justify-content:flex-end; gap:.5rem; margin-top:.5rem; }
+    input[type="submit"]{
+      padding:.6rem .9rem; border-radius:.6rem; border: none; cursor: pointer;
+      background: linear-gradient(145deg, var(--accent), var(--accent-2)); color: #00110f; font-weight:700;
+    }
+  </style>
 </head>
 <body>
-  <div class="site" id="site">
-    <header class="site-header" role="banner">
-      <div>
-        <strong>Eniborah Chamber</strong>
-        <div class="hint">Uniting local business — Join today</div>
+  <header class="site-header" role="banner">
+    <div class="brand">
+      <div class="logo">
+        <div class="logo-mark" aria-hidden="true">C</div>
+        <div>
+          <div class="brand-text">Eniborah Chamber</div>
+          <div style="font-size:.85rem;color:var(--muted)">Join our community</div>
+        </div>
       </div>
-      <nav class="site-nav" aria-label="Main">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="join.html" aria-current="page">Join</a>
-        <a href="events.html">Events</a>
-      </nav>
-    </header>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primaryNav">Menu</button>
+    </div>
 
-    <main class="main" id="main">
-      <!-- JOIN FORM -->
-      <section class="panel" aria-labelledby="join-heading">
-        <h2 id="join-heading">Membership Application</h2>
-        <p class="hint">Please complete the required fields. Accessibility: labels wrap fields to assist screen readers.</p>
+    <nav id="primaryNav" class="primary-nav" role="navigation" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="directory.html">Directory</a></li>
+        <li><a class="active" href="join.html">Join</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <form class="join-form" method="get" action="thankyou.html" novalidate>
-          <div class="two-col">
+  <section class="hero compact" role="region" aria-labelledby="joinHeading">
+    <div class="directory" style="padding-top:.75rem">
+      <h1 id="joinHeading">Become a Member</h1>
+      <p>Complete the application below to join the chamber. Required fields will appear on the confirmation page.</p>
+    </div>
+  </section>
+
+  <main class="site-main" role="main" aria-labelledby="joinHeadingMain">
+    <div class="layout">
+      <!-- Form area -->
+      <section class="form-area" aria-labelledby="applyNow">
+        <h2 id="applyNow">Application</h2>
+
+        <form id="joinForm" method="get" action="thankyou.html" novalidate>
+          <!-- First + Last -->
+          <div class="row two">
             <label class="field">
-              First name *
-              <input type="text" name="firstName" required title="Applicant's first name"
-                autocomplete="given-name" placeholder="First name" aria-required="true" />
+              <span>First name <span aria-hidden="true" style="color:var(--accent)">*</span></span>
+              <input type="text" name="firstName" id="firstName" title="Applicant first name" autocomplete="given-name" required />
             </label>
+
             <label class="field">
-              Last name *
-              <input type="text" name="lastName" required title="Applicant's last name"
-                autocomplete="family-name" placeholder="Last name" aria-required="true" />
+              <span>Last name <span aria-hidden="true" style="color:var(--accent)">*</span></span>
+              <input type="text" name="lastName" id="lastName" title="Applicant last name" autocomplete="family-name" required />
             </label>
           </div>
 
+          <!-- Org Title -->
           <label class="field">
-            Organizational title (min 7 chars; letters, spaces, hyphens)
-            <input type="text" name="orgTitle" title="Organizational title"
-              autocomplete="organization-title" pattern="^[A-Za-z\s-]{7,}$"
-              placeholder="e.g. Regional Director" aria-describedby="orgTitlePattern" />
-            <div id="orgTitlePattern" class="hint">Allowed: letters, spaces, hyphens. Minimum 7 characters.</div>
+            <span>Organizational title</span>
+            <input
+              type="text"
+              name="orgTitle"
+              id="orgTitle"
+              title="Your title within the organization. Minimum 7 characters; letters, hyphens and spaces only."
+              autocomplete="organization-title"
+              pattern="[A-Za-z\s\-]{7,}"
+              placeholder="e.g. Communications Director"
+              aria-describedby="orgTitleHelp"
+            />
+            <small id="orgTitleHelp" style="color:var(--muted);">Only letters, spaces, or hyphens. Minimum 7 characters.</small>
           </label>
 
+          <!-- Email -->
           <label class="field">
-            Email address *
-            <input type="email" name="email" required title="Applicant email address"
-              autocomplete="email" placeholder="e.g. jane.doe@example.com" aria-required="true" />
+            <span>Email address <span aria-hidden="true" style="color:var(--accent)">*</span></span>
+            <input type="email" name="email" id="email" title="Email address" autocomplete="email" required placeholder="name@example.com" />
           </label>
 
+          <!-- Mobile phone -->
           <label class="field">
-            Mobile phone *
-            <input type="tel" name="mobile" required title="Applicant mobile phone number"
-              autocomplete="tel" placeholder="+234 801 234 5678" aria-required="true" />
+            <span>Mobile phone <span aria-hidden="true" style="color:var(--accent)">*</span></span>
+            <input type="tel" name="phone" id="phone" title="Mobile phone number" autocomplete="tel" required placeholder="+234 800 000 0000" />
           </label>
 
+          <!-- Business name -->
           <label class="field">
-            Business / Organization name *
-            <input type="text" name="business" required title="Business or organization name"
-              autocomplete="organization" placeholder="Your business name" aria-required="true" />
+            <span>Business / Organization name <span aria-hidden="true" style="color:var(--accent)">*</span></span>
+            <input type="text" name="business" id="business" title="Your business or organization name" autocomplete="organization" required />
           </label>
 
-          <label class="field">
-            Membership level
-            <div role="radiogroup" aria-labelledby="membership-label">
-              <div id="membership-label" class="hint">Choose one membership level</div>
-              <label><input type="radio" name="membership" value="NP" checked /> NP Membership (Non-Profit — no fee)</label>
-              <label><input type="radio" name="membership" value="Bronze" /> Bronze Membership</label>
-              <label><input type="radio" name="membership" value="Silver" /> Silver Membership</label>
-              <label><input type="radio" name="membership" value="Gold" /> Gold Membership</label>
+          <!-- Membership selection (radio) -->
+          <fieldset style="border:0;padding:0;margin:0">
+            <legend style="font-weight:700;margin-bottom:.35rem">Membership level</legend>
+            <div class="membership-options" role="radiogroup" aria-labelledby="membershipLabel">
+              <label style="display:flex;align-items:center;gap:.5rem">
+                <input type="radio" name="membership" value="NP Membership" checked />
+                <span>NP Membership <span class="badge-np">No fee</span></span>
+              </label>
+              <label style="display:flex;align-items:center;gap:.5rem">
+                <input type="radio" name="membership" value="Bronze Membership" />
+                <span>Bronze Membership</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:.5rem">
+                <input type="radio" name="membership" value="Silver Membership" />
+                <span>Silver Membership</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:.5rem">
+                <input type="radio" name="membership" value="Gold Membership" />
+                <span>Gold Membership</span>
+              </label>
             </div>
-          </label>
+          </fieldset>
 
+          <!-- Business description -->
           <label class="field">
-            Business / Organization description
-            <textarea name="description" title="Describe your business or organization"
-              placeholder="Tell us about your organization"></textarea>
+            <span>Business / Organization description</span>
+            <textarea name="description" id="description" title="Describe your business or organization" rows="4"></textarea>
           </label>
 
+          <!-- Hidden timestamp -->
           <input type="hidden" name="timestamp" id="timestamp" />
 
           <div class="submit-row">
-            <input type="submit" value="Apply for Membership" />
+            <input type="submit" value="Submit application" aria-label="Submit application" />
           </div>
         </form>
-
-        <div class="content-footer">
-          <div class="hint">Fields marked * are required</div>
-          <div class="hint">We respect your privacy.</div>
-        </div>
       </section>
 
-      <!-- MEMBERSHIP CARDS -->
-      <aside class="panel" aria-labelledby="levels-heading">
-        <h2 id="levels-heading">Membership Levels</h2>
-        <p class="hint">Click "More" for benefits. These cards animate on initial load to draw attention.</p>
+      <!-- Cards panel -->
+      <aside class="cards-panel" aria-labelledby="levelsHeading">
+        <h3 id="levelsHeading">Membership Levels</h3>
 
-        <div class="cards" id="membershipCards" aria-live="polite">
-          <article class="card np" id="card-np">
-            <h3>NP Membership</h3>
-            <p>No fee — for registered non-profits. Core benefits: networking, volunteer collaboration, event invites.</p>
-            <div class="card-actions"><a href="#" class="info-link" data-modal="modal-np">More</a></div>
+        <div class="membership-cards" id="membershipCards">
+          <article class="membership-card" data-level="0" style="animation-delay:.05s">
+            <h4>NP Membership <span class="badge-np">No fee</span></h4>
+            <p>For non-profit organizations. Includes listing in our directory and event updates.</p>
+            <a href="#np" class="info-link" data-modal="modal-np">More info</a>
           </article>
 
-          <article class="card bronze" id="card-bronze">
-            <h3>Bronze Membership</h3>
-            <p>Entry-level paid membership — benefits include event access and local directory listing.</p>
-            <div class="card-actions"><a href="#" class="info-link" data-modal="modal-bronze">More</a></div>
+          <article class="membership-card" data-level="1" style="animation-delay:.15s">
+            <h4>Bronze Membership</h4>
+            <p>Entry-level paid membership — promotional listing, event discounts.</p>
+            <a href="#bronze" class="info-link" data-modal="modal-bronze">More info</a>
           </article>
 
-          <article class="card silver" id="card-silver">
-            <h3>Silver Membership</h3>
-            <p>Includes Bronze benefits plus training discounts and enhanced directory spotlight.</p>
-            <div class="card-actions"><a href="#" class="info-link" data-modal="modal-silver">More</a></div>
+          <article class="membership-card" data-level="2" style="animation-delay:.25s">
+            <h4>Silver Membership</h4>
+            <p>Includes Bronze benefits plus training access and highlighted directory position.</p>
+            <a href="#silver" class="info-link" data-modal="modal-silver">More info</a>
           </article>
 
-          <article class="card gold" id="card-gold">
-            <h3>Gold Membership</h3>
-            <p>All Silver benefits plus premium promotion, feature spots on home page, and VIP events.</p>
-            <div class="card-actions"><a href="#" class="info-link" data-modal="modal-gold">More</a></div>
+          <article class="membership-card" data-level="3" style="animation-delay:.35s">
+            <h4>Gold Membership</h4>
+            <p>All benefits: featured spotlight on homepage, priority event sponsorship opportunities.</p>
+            <a href="#gold" class="info-link" data-modal="modal-gold">More info</a>
           </article>
         </div>
       </aside>
-    </main>
+    </div>
+  </main>
 
-    <footer class="site-footer" role="contentinfo">
-      <div>© Eniborah Chamber of Commerce</div>
-      <nav aria-label="Footer">
-        <a href="privacy.html">Privacy</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </footer>
-  </div>
+  <!-- Modals: use <dialog> where supported, otherwise fallback to hidden div -->
+  <dialog id="modal-np" class="modal" aria-labelledby="npTitle">
+    <h3 id="npTitle">NP Membership — Benefits</h3>
+    <p>No fee. Benefits include: directory listing, community newsletter, event invites, volunteer coordination support.</p>
+    <button class="close-btn" data-close>Close</button>
+  </dialog>
 
-  <!-- Modals -->
-  <div class="modal-backdrop" id="modal-np-backdrop" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-np-title" tabindex="-1">
-      <header><h3 id="modal-np-title">NP Membership — Benefits</h3><button class="close" data-close>&times; Close</button></header>
-      <div><p>NP Membership is free for qualifying non-profit organizations. Benefits include:</p>
-        <ul><li>Networking & volunteer matching</li><li>Invitations to community events</li><li>Access to basic training workshops</li></ul>
+  <dialog id="modal-bronze" class="modal" aria-labelledby="bronzeTitle">
+    <h3 id="bronzeTitle">Bronze Membership — Benefits</h3>
+    <p>Discounted event tickets, basic promotional listing, access to member resources, and event notices.</p>
+    <button class="close-btn" data-close>Close</button>
+  </dialog>
+
+  <dialog id="modal-silver" class="modal" aria-labelledby="silverTitle">
+    <h3 id="silverTitle">Silver Membership — Benefits</h3>
+    <p>All Bronze benefits + training sessions, featured directory placement, and monthly spotlight opportunities.</p>
+    <button class="close-btn" data-close>Close</button>
+  </dialog>
+
+  <dialog id="modal-gold" class="modal" aria-labelledby="goldTitle">
+    <h3 id="goldTitle">Gold Membership — Benefits</h3>
+    <p>All Silver benefits + homepage advertising spotlights, priority sponsorship, and premium event access.</p>
+    <button class="close-btn" data-close>Close</button>
+  </dialog>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+      <div>
+        <h3>Eniborah Chamber</h3>
+        <p class="dev-info">Connecting businesses & communities.</p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul class="contact-list">
+          <li>info@eniborah.example</li>
+          <li>+234 800 000 0000</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Links</h3>
+        <ul class="contact-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="directory.html">Directory</a></li>
+        </ul>
       </div>
     </div>
-  </div>
+  </footer>
 
-  <!-- Bronze -->
-  <div class="modal-backdrop" id="modal-bronze-backdrop" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-bronze-title" tabindex="-1">
-      <header><h3 id="modal-bronze-title">Bronze Membership — Benefits</h3><button class="close" data-close>&times; Close</button></header>
-      <div><p>Bronze members receive:</p><ul><li>Listing in our business directory</li><li>Access to member-only events</li><li>Discounted event tickets</li></ul></div>
-    </div>
-  </div>
+  <script>
+    // set timestamp when page loads
+    (function(){
+      const ts = document.getElementById('timestamp');
+      if(ts){
+        // ISO string is precise and easy to read programmatically
+        ts.value = new Date().toISOString();
+      }
 
-  <!-- Silver -->
-  <div class="modal-backdrop" id="modal-silver-backdrop" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-silver-title" tabindex="-1">
-      <header><h3 id="modal-silver-title">Silver Membership — Benefits</h3><button class="close" data-close>&times; Close</button></header>
-      <div><p>Silver members receive Bronze benefits plus:</p><ul><li>Training discounts and workshops</li><li>Featured directory spot</li><li>Opportunities to sponsor events</li></ul></div>
-    </div>
-  </div>
+      // Modal handling: open dialog where available, fallback to alert
+      function openModal(id){
+        const dlg = document.getElementById(id);
+        if(!dlg) return;
+        if(typeof dlg.showModal === 'function'){
+          dlg.showModal();
+          // focus inside
+          const btn = dlg.querySelector('[data-close]');
+          if(btn) btn.focus();
+        } else {
+          // fallback - basic accessible substitute: create overlay or use alert
+          alert(dlg.querySelector('h3')?.textContent + '\n\n' + dlg.querySelector('p')?.textContent);
+        }
+      }
+      function closeModal(el){
+        if(typeof el.close === 'function') el.close();
+      }
 
-  <!-- Gold -->
-  <div class="modal-backdrop" id="modal-gold-backdrop" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-gold-title" tabindex="-1">
-      <header><h3 id="modal-gold-title">Gold Membership — Benefits</h3><button class="close" data-close>&times; Close</button></header>
-      <div><p>Gold members enjoy premium benefits:</p><ul><li>Premium home-page spotlight & advertising</li><li>VIP access to events and private networking</li><li>Customized training & partnership opportunities</li></ul></div>
-    </div>
-  </div>
+      // attach link handlers
+      document.querySelectorAll('.info-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const modalId = link.dataset.modal;
+          if(modalId) openModal(modalId);
+        });
+      });
 
-  <script src="join.js"></script>
+      // close buttons
+      document.querySelectorAll('[data-close]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const dlg = btn.closest('dialog');
+          if(dlg) closeModal(dlg);
+        });
+      });
+
+      // allow Esc to close any open dialog
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape'){
+          document.querySelectorAll('dialog[open]').forEach(d => {
+            try { d.close(); } catch(err){}
+          });
+        }
+      });
+
+      // small enhancement: keyboard focus outlines for nav toggle (simple)
+      const navToggle = document.querySelector('.nav-toggle');
+      const primaryNav = document.getElementById('primaryNav');
+      if(navToggle && primaryNav){
+        navToggle.addEventListener('click', () => {
+          const open = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', String(!open));
+          primaryNav.classList.toggle('open');
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
