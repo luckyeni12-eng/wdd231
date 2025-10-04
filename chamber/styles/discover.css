@@ -1,0 +1,127 @@
+/* discover.css
+   Additional styles specific to discover.html.
+   Assumes styles/styles.css is already loaded first.
+*/
+
+/* Container for all cards */
+.places-grid {
+  max-width: 1200px;
+  margin: 1rem auto;
+  padding: 1rem;
+  display: grid;
+  gap: 0.9rem;
+  /* SMALL (mobile) — named grid areas stacked */
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "c1"
+    "c2"
+    "c3"
+    "c4"
+    "c5"
+    "c6"
+    "c7"
+    "c8";
+}
+
+/* Each card will set grid-area via data attribute in JS */
+.place-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 0.9rem;
+  border-radius: 0.9rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  align-items: start;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+/* figure and image layout */
+.place-figure { margin: 0; overflow: hidden; border-radius: .6rem; }
+.place-figure img { width: 100%; height: auto; display: block; object-fit: cover; }
+
+/* title / address / desc */
+.place-title { margin: 0; font-size: 1.05rem; }
+.place-address { font-style: normal; color: var(--muted); margin: 0.2rem 0; }
+.place-desc { margin: 0; color: var(--muted); line-height: 1.4; }
+
+/* actions */
+.place-actions { margin-top: 0.5rem; display: flex; gap: 0.5rem; }
+.btn-learn {
+  background: transparent;
+  border: 1px solid var(--accent);
+  padding: .5rem .75rem;
+  border-radius: .55rem;
+  cursor: pointer;
+  color: var(--text);
+}
+.btn-learn:hover { background: rgba(15,118,110,.12); }
+
+/* VISIT MESSAGE */
+.visit-message {
+  max-width: 1200px;
+  margin: 0.75rem auto;
+  padding: 0.5rem;
+  position: relative;
+  border-radius: 0.6rem;
+  background: linear-gradient(180deg, rgba(15,118,110,.06), rgba(34,197,94,.03));
+  border: 1px solid rgba(15,118,110,.14);
+}
+.visit-inner { position: relative; padding: .5rem 1rem; }
+.visit-message .close {
+  position: absolute;
+  right: 0.4rem;
+  top: 0.25rem;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* MEDIUM screens: 2 columns layout using named areas */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .places-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "c1 c2"
+      "c3 c4"
+      "c5 c6"
+      "c7 c8";
+  }
+
+  /* show a subtle card layout improvement */
+  .place-card { grid-template-columns: 1fr; }
+}
+
+/* LARGE screens: 4 columns grid using named areas (landscape/dense layout) */
+@media (min-width: 1025px) {
+  .places-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "c1 c2 c3 c4"
+      "c5 c6 c7 c8";
+  }
+  .place-card { grid-template-columns: 1fr; }
+}
+
+/* HOVER EFFECT (desktop only) - do not apply on mobile */
+@media (min-width: 641px) {
+  .place-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 16px 40px rgba(2,6,23,0.6);
+  }
+
+  /* image filter on hover */
+  .place-card:hover img {
+    filter: saturate(1.05) contrast(1.03) drop-shadow(0 6px 18px rgba(0,0,0,0.45));
+    transform: scale(1.02);
+    transition: transform .25s ease, filter .25s ease;
+  }
+}
+
+/* Accessibility: ensure focus states */
+.place-card:focus-within { outline: 3px solid rgba(15,118,110,.18); }
+
+/* Small utility tweaks */
+.visually-hidden { position: absolute !important; left: -10000px !important; top: auto !important; width: 1px !important; height: 1px !important; overflow: hidden; }

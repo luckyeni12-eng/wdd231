@@ -1,0 +1,66 @@
+[
+  {
+    "id": "c1",
+    "title": "Lekki Conservation Centre",
+    "address": "Lekki-Epe Expressway, Lekki, Lagos",
+    "description": "A protected nature reserve featuring Africa's longest canopy walkway, birdlife, and walking trails—perfect for family outings and eco-tourism.",
+    "image": "images/discover/lekki-conservation.webp",
+    "url": "https://example.org/lekki-conservation"
+  },
+  {
+    "id": "c2",
+    "title": "National Museum Lagos",
+    "address": "Awolowo Road, Ikoyi, Lagos",
+    "description": "Houses a range of Nigerian heritage collections including traditional art, historical artifacts and curated exhibitions about Nigerian history.",
+    "image": "images/discover/national-museum.webp",
+    "url": "https://example.org/national-museum-lagos"
+  },
+  {
+    "id": "c3",
+    "title": "Nike Art Gallery",
+    "address": "Lekki Phase 1, Lagos",
+    "description": "One of the largest art galleries in West Africa — galleries, workshops and a colourful marketplace showcasing Nigerian textiles and crafts.",
+    "image": "images/discover/nike-art.webp",
+    "url": "https://example.org/nike-art-gallery"
+  },
+  {
+    "id": "c4",
+    "title": "Tarkwa Bay Beach",
+    "address": "Tarkwa Bay, Lagos Harbour",
+    "description": "A sheltered beach reachable by boat; ideal for swimming, beach sports and picnics away from the city’s bustle.",
+    "image": "images/discover/tarkwa-bay.webp",
+    "url": "https://example.org/tarkwa-bay"
+  },
+  {
+    "id": "c5",
+    "title": "Balogun Market",
+    "address": "Balogun St, Lagos Island",
+    "description": "A historic and bustling open market where traders sell textiles, accessories and local wares — a great place to see Lagos trade culture.",
+    "image": "images/discover/balogun-market.webp",
+    "url": "https://example.org/balogun-market"
+  },
+  {
+    "id": "c6",
+    "title": "National Theatre",
+    "address": "Iganmu, Lagos",
+    "description": "Cultural hub for performing arts — catch theatre productions, film screenings, and occasional festivals celebrating Nigerian arts.",
+    "image": "images/discover/national-theatre.webp",
+    "url": "https://example.org/national-theatre"
+  },
+  {
+    "id": "c7",
+    "title": "Freedom Park",
+    "address": "Broad Street, Lagos Island",
+    "description": "A memorial and leisure park on Lagos Island — open-air concerts, markets and a relaxed green space in the city centre.",
+    "image": "images/discover/freedom-park.webp",
+    "url": "https://example.org/freedom-park"
+  },
+  {
+    "id": "c8",
+    "title": "Lekki Arts & Crafts Centre",
+    "address": "Lekki Peninsula, Lagos",
+    "description": "Local artisan stalls, handmade crafts and textile vendors — a perfect stop to support local creative businesses.",
+    "image": "images/discover/lekki-arts.webp",
+    "url": "https://example.org/lekki-arts"
+  }
+]
