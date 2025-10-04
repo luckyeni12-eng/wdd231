@@ -1,0 +1,46 @@
+/* Typography & Color Scheme */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #F9FAFB;
+  color: #111827;
+  margin: 0;
+  padding: 0;
+}
+
+header, footer {
+  background: #1E3A8A;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #1E3A8A;
+}
+
+section {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.color-sample {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  border-radius: 4px;
+}
+
+.primary { background: #1E3A8A; }
+.secondary { background: #FBBF24; }
+
+.wireframe {
+  background: #E5E7EB;
+  padding: 1rem;
+  border-radius: 6px;
+  font-family: monospace;
+}
