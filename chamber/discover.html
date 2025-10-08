@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Eniborah Chamber of Commerce | Discover Lagos</title>
-  <meta name="description" content="Discover Lagos: attractions, culture, and businesses around Lagos promoted by the Eniborah Chamber of Commerce." />
-  <meta name="author" content="Lucky Ayei Inyang Eni - WDD 231" />
+  <!-- Correct meta charset declaration -->
+  <meta charset="UTF-8">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Eniborah Chamber — Discover Lagos" />
-  <meta property="og:description" content="Explore 8 places of interest in Lagos curated by the chamber." />
-  <meta property="og:locale" content="en_US" />
+  <!-- Viewport and page info -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page title and metadata -->
+  <title>Eniborah Chamber of Commerce | Discover Lagos</title>
+  <meta name="description" content="Discover Lagos: attractions, culture, and businesses around Lagos promoted by the Eniborah Chamber of Commerce.">
+  <meta name="author" content="Lucky Ayei Inyang Eni - WDD 231">
+
+  <!-- Open Graph (OG) tags for social media -->
+  <meta property="og:title" content="Eniborah Chamber — Discover Lagos">
+  <meta property="og:description" content="Explore 8 places of interest in Lagos curated by the Eniborah Chamber of Commerce.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eniborahchamber.org/">
+  <meta property="og:image" content="https://eniborahchamber.org/images/og-image.jpg">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles/reset.css" />
-  <link rel="stylesheet" href="styles/styles.css" />
-  <link rel="stylesheet" href="styles/discover.css" />
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/discover.css">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 </head>
+
 <body>
   <header class="site-header">
     <div class="brand">
@@ -27,6 +36,7 @@
       </a>
       <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation">☰</button>
     </div>
+
     <nav id="primaryNav" class="primary-nav" aria-label="Primary">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -40,7 +50,7 @@
   <main id="mainContent">
     <section class="hero compact">
       <h1>Discover Lagos</h1>
-      <p>Explore eight places of interest around Lagos — culture, food, parks and business hubs that make our city vibrant.</p>
+      <p>Explore eight places of interest around Lagos — culture, food, parks, and business hubs that make our city vibrant.</p>
     </section>
 
     <section id="visitMessage" class="visit-message" role="status" aria-live="polite" hidden>
@@ -74,18 +84,22 @@
 
   <footer class="site-footer">
     <div class="footer-grid">
-      <section aria-labelledby="contactHeading">
-        <h3 id="contactHeading">Contact</h3>
-        <ul class="contact-list">
-          <li>Email: <a href="mailto:info@eniborahchamber.org">info@Eniborahchamber.org</a></li>
-          <li>Phone: <a href="tel:+2348000000000">+234 800 000 0000</a></li>
-          <li>Address: 1 Market Square, Lagos</li>
-        </ul>
-      </section>
+      <address>
+        <section aria-labelledby="contactHeading">
+          <h3 id="contactHeading">Contact</h3>
+          <ul class="contact-list">
+            <li>Email: <a href="mailto:info@eniborahchamber.org">info@eniborahchamber.org</a></li>
+            <li>Phone: <a href="tel:+2348000000000">+234 800 000 0000</a></li>
+            <li>Address: 1 Market Square, Lagos</li>
+          </ul>
+        </section>
+      </address>
+
       <section aria-labelledby="aboutHeading">
         <h3 id="aboutHeading">About</h3>
         <p>We foster local business growth through networking, advocacy, and community events.</p>
       </section>
+
       <section aria-labelledby="devHeading" class="dev-info">
         <h3 id="devHeading">Developer</h3>
         <p>&copy; <span id="year"></span> Eniborah Chamber</p>
@@ -94,6 +108,7 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script defer src="scripts/main.js"></script>
   <script defer src="scripts/discover.js"></script>
   <script>
