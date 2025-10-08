@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Urban Garden</title>
+  <meta name="description" content="Contact form for Urban Garden.">
+  <meta name="author" content="Lucky Ayei Inyang Eni">
+
+  <!-- Properly URL-encoded inline SVG favicon -->
+  <link rel="icon" 
+    href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2750%27%20r%3D%2745%27%20fill%3D%27%234caf50%27/%3E%3Cpath%20d%3D%27M40%2055c5-12%2020-12%2024%200%27%20stroke%3D%27%23fff%27%20stroke-width%3D%275%27%20fill%3D%27none%27%20stroke-linecap%3D%27round%27/%3E%3C/svg%3E">
+  
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Urban Garden</a>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="plants.html">Plant Catalog</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Contact</h1>
+    <p>Use the form below. This page will display the submitted values after you submit (form uses GET for demonstration).</p>
+
+    <form id="contact-form" action="contact-action.html" method="get" class="contact-form" novalidate>
+      <label>Name
+        <input type="text" name="name" required>
+      </label>
+      <label>Email
+        <input type="email" name="email" required>
+      </label>
+      <label>Message
+        <textarea name="message" rows="4" required></textarea>
+      </label>
+
+      <fieldset>
+        <legend>Subscribe</legend>
+        <label>
+          <input type="checkbox" name="subscribe" value="yes"> Email updates
+        </label>
+      </fieldset>
+
+      <button class="btn" type="submit">Submit</button>
+    </form>
+
+    <section id="form-result" class="form-result" aria-live="polite">
+      <h2 class="visually-hidden">Form Result</h2>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year4"></span> Urban Garden</p>
+    </div>
+  </footer>
+
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>

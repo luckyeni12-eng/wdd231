@@ -1,0 +1,152 @@
+[
+  {
+    "id": "p1",
+    "name": "Snake Plant",
+    "scientific": "Sansevieria trifasciata",
+    "light": "low",
+    "water": "low",
+    "price": 12.5,
+    "origin": "West Africa",
+    "description": "A hardy, low-light tolerant plant ideal for beginners."
+  },
+  {
+    "id": "p2",
+    "name": "Pothos",
+    "scientific": "Epipremnum aureum",
+    "light": "medium",
+    "water": "medium",
+    "price": 9.0,
+    "origin": "Southeast Asia",
+    "description": "Trailing vine that tolerates many indoor conditions."
+  },
+  {
+    "id": "p3",
+    "name": "Spider Plant",
+    "scientific": "Chlorophytum comosum",
+    "light": "medium",
+    "water": "medium",
+    "price": 8.0,
+    "origin": "South Africa",
+    "description": "Air-purifying and easy to propagate from plantlets."
+  },
+  {
+    "id": "p4",
+    "name": "ZZ Plant",
+    "scientific": "Zamioculcas zamiifolia",
+    "light": "low",
+    "water": "low",
+    "price": 18.0,
+    "origin": "East Africa",
+    "description": "Glossy leaves, almost indestructible with proper watering."
+  },
+  {
+    "id": "p5",
+    "name": "Herb — Basil",
+    "scientific": "Ocimum basilicum",
+    "light": "high",
+    "water": "medium",
+    "price": 5.0,
+    "origin": "India",
+    "description": "Great for kitchen windowsills — edible and fragrant."
+  },
+  {
+    "id": "p6",
+    "name": "Aloe Vera",
+    "scientific": "Aloe vera",
+    "light": "high",
+    "water": "low",
+    "price": 11.0,
+    "origin": "Arabian Peninsula",
+    "description": "Succulent with medicinal gel in leaves; drought tolerant."
+  },
+  {
+    "id": "p7",
+    "name": "Rubber Plant",
+    "scientific": "Ficus elastica",
+    "light": "medium",
+    "water": "medium",
+    "price": 25.0,
+    "origin": "Asia",
+    "description": "Bold foliage, makes a great statement plant."
+  },
+  {
+    "id": "p8",
+    "name": "Peace Lily",
+    "scientific": "Spathiphyllum wallisii",
+    "light": "low",
+    "water": "high",
+    "price": 14.0,
+    "origin": "Americas",
+    "description": "Shade-loving and blooms white bracts indoors."
+  },
+  {
+    "id": "p9",
+    "name": "English Ivy",
+    "scientific": "Hedera helix",
+    "light": "medium",
+    "water": "medium",
+    "price": 7.0,
+    "origin": "Europe",
+    "description": "Classic climber suitable for hanging baskets."
+  },
+  {
+    "id": "p10",
+    "name": "Jade Plant",
+    "scientific": "Crassula ovata",
+    "light": "high",
+    "water": "low",
+    "price": 16.0,
+    "origin": "South Africa",
+    "description": "Popular succulent with thick glossy leaves."
+  },
+  {
+    "id": "p11",
+    "name": "Philodendron",
+    "scientific": "Philodendron hederaceum",
+    "light": "medium",
+    "water": "medium",
+    "price": 13.0,
+    "origin": "Americas",
+    "description": "Versatile trailing philodendron for shelves and baskets."
+  },
+  {
+    "id": "p12",
+    "name": "Calathea",
+    "scientific": "Calathea orbifolia",
+    "light": "low",
+    "water": "high",
+    "price": 22.0,
+    "origin": "Brazil",
+    "description": "Decorative foliage with striking leaf patterns."
+  },
+  {
+    "id": "p13",
+    "name": "Succulent Mix",
+    "scientific": "Various",
+    "light": "high",
+    "water": "low",
+    "price": 20.0,
+    "origin": "Mixed",
+    "description": "A small collection of assorted succulents, great for sunny spots."
+  },
+  {
+    "id": "p14",
+    "name": "Mint",
+    "scientific": "Mentha",
+    "light": "medium",
+    "water": "high",
+    "price": 6.0,
+    "origin": "Europe & Asia",
+    "description": "Fast-growing, great for containers but can spread aggressively."
+  },
+  {
+    "id": "p15",
+    "name": "Fiddle Leaf Fig",
+    "scientific": "Ficus lyrata",
+    "light": "high",
+    "water": "medium",
+    "price": 45.0,
+    "origin": "West Africa",
+    "description": "Large-leaved indoor tree — loves bright, indirect light."
+  }
+]

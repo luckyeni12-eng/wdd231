@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Urban Garden</title>
+  <meta name="description" content="About Urban Garden — mission, attributions, and resources.">
+  <meta name="author" content="Lucky Ayei Inyang Eni">
+  <meta property="og:title" content="About — Urban Garden">
+
+  <!-- ✅ favicon with no self-closing slash -->
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%234caf50'/%3E%3Cpath%20d='M40%2055c5-12%2020-12%2024%200'%20stroke='%23fff'%20stroke-width='5'%20fill='none'%20stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Urban Garden</a>
+
+      <button
+        id="nav-toggle-3"
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="site-nav-3"
+        aria-label="Toggle navigation"
+      >
+        <span class="hamburger"></span>
+      </button>
+
+      <!-- ✅ Removed redundant role="navigation" (nav already implies it) -->
+      <nav id="site-nav-3" class="site-nav" aria-hidden="true">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="plants.html">Plant Catalog</a></li>
+          <li><a class="active" href="about.html">About</a></li>
+          <li><a href="contact-action.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container about-page">
+    <h1>About Urban Garden</h1>
+    <p>
+      Urban Garden is a small project demonstrating responsive web design,
+      JavaScript-driven dynamic content, and accessible components. It was built
+      as a final project for a frontend web course.
+    </p>
+
+    <h2>Attributions</h2>
+    <ul>
+      <li>Plant descriptions are sample content created for the project.</li>
+      <li>Icons and SVG graphics were built specifically for this demo.</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>
+      Send questions using the form (it will show submitted data on the action
+      page): <a href="contact-action.html">Contact form</a>.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year3"></span> Urban Garden</p>
+    </div>
+  </footer>
+
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>

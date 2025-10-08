@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Urban Garden — Grow in the City</title>
+  <meta name="description" content="Urban Garden — city-friendly plants, practical care tips, and a local plant catalog.">
+  <meta name="author" content="Lucky Ayei Inyang Eni">
+  <meta property="og:title" content="Urban Garden — Grow in the City">
+  <meta property="og:description" content="City-friendly plants, care tips, and a lightweight catalog with 15+ plant profiles.">
+  <meta property="og:type" content="website">
+
+  <!-- Fixed favicon: fully percent-encoded SVG (no spaces or invalid chars) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2750%27%20r%3D%2745%27%20fill%3D%27%234caf50%27/%3E%3Cpath%20d%3D%27M40%2055c5-12%2020-12%2024%200%27%20stroke%3D%27%23fff%27%20stroke-width%3D%275%27%20fill%3D%27none%27%20stroke-linecap%3D%27round%27/%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Urban Garden home">Urban Garden</a>
+      <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-hidden="true">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="plants.html">Plant Catalog</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact-action.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="hero">
+      <h1>Urban Garden</h1>
+      <p class="lede">
+        Small spaces, big growth. Discover city-friendly plants, care tips, and a curated catalog of 15+ plants for balconies and apartments.
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="plants.html">Browse the Catalog</a>
+        <button id="theme-toggle" class="btn alt">Toggle Theme</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="featured-heading" class="featured">
+      <h2 id="featured-heading">Featured Plants</h2>
+      <div id="featured-grid" class="grid" aria-live="polite"></div>
+    </section>
+
+    <section class="about-preview">
+      <h2>Why Urban Gardening?</h2>
+      <p>
+        Urban gardening improves air quality, reduces stress, and produces fresh herbs and greens within walking distance of your kitchen.
+        Whether you have a windowsill or a terrace, there's a plant for you.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Urban Garden — <a href="about.html">Attributions</a></p>
+      <nav aria-label="footer">
+        <a href="plants.html">Catalog</a> | <a href="contact-action.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div id="modal-root" aria-hidden="true"></div>
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
