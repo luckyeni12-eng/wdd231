@@ -6,26 +6,26 @@
   <title>Eniborah Chamber of Commerce | Discover Lagos</title>
   <meta name="description" content="Discover Lagos: attractions, culture, and businesses around Lagos promoted by the Eniborah Chamber of Commerce." />
   <meta name="author" content="Lucky Ayei Inyang Eni - WDD 231" />
+
   <!-- Open Graph -->
   <meta property="og:title" content="Eniborah Chamber — Discover Lagos" />
   <meta property="og:description" content="Explore 8 places of interest in Lagos curated by the chamber." />
   <meta property="og:locale" content="en_US" />
-  <!-- Styles (reset before other styles) -->
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles/reset.css" />
   <link rel="stylesheet" href="styles/styles.css" />
-  <!-- discover-specific rules -->
   <link rel="stylesheet" href="styles/discover.css" />
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
-  <!-- Header (preserved) -->
   <header class="site-header">
     <div class="brand">
       <a href="index.html" class="logo" aria-label="Eniborah Chamber of Commerce Home">
         <span class="logo-mark">TCC</span>
         <span class="brand-text">Eniborah Chamber of Commerce</span>
       </a>
-      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation"> ☰ </button>
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation">☰</button>
     </div>
     <nav id="primaryNav" class="primary-nav" aria-label="Primary">
       <ul>
@@ -43,7 +43,6 @@
       <p>Explore eight places of interest around Lagos — culture, food, parks and business hubs that make our city vibrant.</p>
     </section>
 
-    <!-- Visit message box (localStorage driven) -->
     <section id="visitMessage" class="visit-message" role="status" aria-live="polite" hidden>
       <div class="visit-inner">
         <button id="closeVisitMsg" class="close" aria-label="Close visit message">✕</button>
@@ -51,16 +50,11 @@
       </div>
     </section>
 
-    <!-- Content area: grid of cards using named grid areas -->
     <section class="discover-grid" aria-labelledby="discoverHeading">
       <h2 id="discoverHeading" class="visually-hidden">Discover Lagos — Places of interest</h2>
+      <div id="placesGrid" class="places-grid" aria-live="polite"></div>
 
-      <!-- Grid container -->
-      <div id="placesGrid" class="places-grid" aria-live="polite">
-        <!-- Cards will be inserted here by scripts -->
-      </div>
-
-      <!-- Template (hidden) for JS to clone -->
+      <!-- Template -->
       <template id="placeTemplate">
         <article class="place-card" role="article">
           <h2 class="place-title"></h2>
@@ -75,11 +69,9 @@
           </div>
         </article>
       </template>
-
     </section>
   </main>
 
-  <!-- Footer preserved -->
   <footer class="site-footer">
     <div class="footer-grid">
       <section aria-labelledby="contactHeading">
@@ -102,12 +94,9 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script defer src="scripts/main.js"></script> <!-- your existing main (keeps nav behavior) -->
+  <script defer src="scripts/main.js"></script>
   <script defer src="scripts/discover.js"></script>
-
   <script>
-    // small footer helpers (same pattern used in your other pages)
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
