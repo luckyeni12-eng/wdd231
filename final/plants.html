@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Plant Catalog — Urban Garden</title>
   <meta name="description" content="Catalog of city-friendly plants with care details and prices.">
-  <meta name="author" content="Lucky Ayei Inyang Eni">
   <meta property="og:title" content="Plant Catalog — Urban Garden">
-
-  <!-- ✅ Properly URL-encoded inline SVG favicon -->
-  <link rel="icon" 
-        href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%234caf50'/%3E%3Cpath%20d='M40%2055c5-12%2020-12%2024%200'%20stroke='%23fff'%20stroke-width='5'%20fill='none'%20stroke-linecap='round'/%3E%3C/svg%3E">
-  
+  <meta property="og:image" content="https://luckyjohn.github.io/wdd231/images/og-preview.jpg">
+  <meta property="og:url" content="https://luckyjohn.github.io/wdd231/final/plants.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%234caf50'/%3E%3Cpath%20d='M40%2055c5-12%2020-12%2024%200'%20stroke='%23fff'%20stroke-width='5'%20fill='none'%20stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
@@ -21,7 +18,6 @@
       <button id="nav-toggle-2" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-2" aria-label="Toggle navigation">
         <span class="hamburger"></span>
       </button>
-      <!-- ✅ Removed redundant role="navigation" -->
       <nav id="site-nav-2" class="site-nav" aria-hidden="true">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -37,18 +33,16 @@
     <section class="controls">
       <h1>Plant Catalog</h1>
       <form id="filter-form" class="filter-form" aria-label="Filter plants">
-        <label> Search
-          <input id="search" name="search" type="search" placeholder="search by name or origin">
-        </label>
-        <label> Light
+        <label>Search <input id="search" name="search" type="search" placeholder="search by name or origin"></label>
+        <label>Light
           <select id="filter-light" name="light">
-            <option value="">All light levels</option>
+            <option value="">All</option>
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
           </select>
         </label>
-        <label> Sort
+        <label>Sort
           <select id="sort-by" name="sort">
             <option value="name">Name</option>
             <option value="price">Price (low → high)</option>
@@ -58,7 +52,6 @@
       </form>
     </section>
 
-    <!-- Added heading for accessibility -->
     <section aria-labelledby="catalog-heading">
       <h2 id="catalog-heading" class="visually-hidden">Available Plants</h2>
       <div id="catalog" class="grid" aria-live="polite"></div>
@@ -68,9 +61,6 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>&copy; <span id="year2"></span> Urban Garden</p>
-      <nav aria-label="footer">
-        <a href="index.html">Home</a> | <a href="about.html">About</a>
-      </nav>
     </div>
   </footer>
 
