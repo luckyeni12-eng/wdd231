@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Correct meta charset declaration -->
   <meta charset="UTF-8">
-
-  <!-- Viewport and page info -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Page title and metadata -->
   <title>Eniborah Chamber of Commerce | Discover Lagos</title>
   <meta name="description" content="Discover Lagos: attractions, culture, and businesses around Lagos promoted by the Eniborah Chamber of Commerce.">
   <meta name="author" content="Lucky Ayei Inyang Eni - WDD 231">
 
-  <!-- Open Graph (OG) tags for social media -->
+  <!-- Open Graph (OG) tags -->
   <meta property="og:title" content="Eniborah Chamber — Discover Lagos">
   <meta property="og:description" content="Explore 8 places of interest in Lagos curated by the Eniborah Chamber of Commerce.">
   <meta property="og:locale" content="en_US">
@@ -53,7 +48,9 @@
       <p>Explore eight places of interest around Lagos — culture, food, parks, and business hubs that make our city vibrant.</p>
     </section>
 
+    <!-- Added hidden heading for accessibility -->
     <section id="visitMessage" class="visit-message" role="status" aria-live="polite" hidden>
+      <h2 class="visually-hidden">Visit Message</h2>
       <div class="visit-inner">
         <button id="closeVisitMsg" class="close" aria-label="Close visit message">✕</button>
         <p id="visitText"></p>
@@ -61,7 +58,7 @@
     </section>
 
     <section class="discover-grid" aria-labelledby="discoverHeading">
-      <h2 id="discoverHeading" class="visually-hidden">Discover Lagos — Places of interest</h2>
+      <h2 id="discoverHeading" class="visually-hidden">Discover Lagos — Places of Interest</h2>
       <div id="placesGrid" class="places-grid" aria-live="polite"></div>
 
       <!-- Template -->
@@ -84,16 +81,17 @@
 
   <footer class="site-footer">
     <div class="footer-grid">
-      <address>
-        <section aria-labelledby="contactHeading">
-          <h3 id="contactHeading">Contact</h3>
+      <!-- FIXED: Heading outside the address -->
+      <div class="contact-block">
+        <h3 id="contactHeading">Contact</h3>
+        <address aria-labelledby="contactHeading">
           <ul class="contact-list">
             <li>Email: <a href="mailto:info@eniborahchamber.org">info@eniborahchamber.org</a></li>
             <li>Phone: <a href="tel:+2348000000000">+234 800 000 0000</a></li>
             <li>Address: 1 Market Square, Lagos</li>
           </ul>
-        </section>
-      </address>
+        </address>
+      </div>
 
       <section aria-labelledby="aboutHeading">
         <h3 id="aboutHeading">About</h3>
