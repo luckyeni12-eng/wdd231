@@ -1,0 +1,137 @@
+[
+  {
+    "id": "att-001",
+    "name": "Nike Art Gallery",
+    "location": "Lekki",
+    "category": "Museum",
+    "year_established": 2000,
+    "description": "A major art gallery featuring works by Nigerian artists, workshops and cultural events.",
+    "image": "images/attraction1.jpg"
+  },
+  {
+    "id": "att-002",
+    "name": "National Museum Lagos",
+    "location": "Onikan",
+    "category": "Museum",
+    "year_established": 1957,
+    "description": "National Museum housing archaeological and ethnographic collections.",
+    "image": "images/attraction2.jpg"
+  },
+  {
+    "id": "att-003",
+    "name": "Freedom Park",
+    "location": "Broad Street",
+    "category": "Park",
+    "year_established": 2001,
+    "description": "A heritage site and cultural center established on the site of an old colonial prison.",
+    "image": "images/attraction3.jpg"
+  },
+  {
+    "id": "att-004",
+    "name": "Kalakuta Republic Museum",
+    "location": "Yaba",
+    "category": "Museum",
+    "year_established": 1970,
+    "description": "Museum dedicated to the life and work of Fela Kuti with memorabilia and exhibits.",
+    "image": "images/attraction4.jpg"
+  },
+  {
+    "id": "att-005",
+    "name": "Lekki Conservation Centre",
+    "location": "Lekki",
+    "category": "Nature",
+    "year_established": 1990,
+    "description": "Urban nature conservation center with canopy walk and wildlife viewing.",
+    "image": "images/attraction5.jpg"
+  },
+  {
+    "id": "att-006",
+    "name": "National Arts Theatre",
+    "location": "Iganmu",
+    "category": "Theatre",
+    "year_established": 1970,
+    "description": "Iconic circular structure hosting performances and cultural ceremonies.",
+    "image": "images/attraction6.jpg"
+  },
+  {
+    "id": "att-007",
+    "name": "Tafawa Balewa Square",
+    "location": "Ikeja",
+    "category": "Monument",
+    "year_established": 1972,
+    "description": "Large public square with monuments and event spaces commemorating national events.",
+    "image": "images/attraction7.jpg"
+  },
+  {
+    "id": "att-008",
+    "name": "Iga Idunganran Palace",
+    "location": "Lagos Island",
+    "category": "Historic Site",
+    "year_established": 1700,
+    "description": "The official palace of the Oba of Lagos with long historical significance.",
+    "image": "images/attraction8.jpg"
+  },
+  {
+    "id": "att-009",
+    "name": "Eko Atlantic (Coastal Walk)",
+    "location": "Victoria Island",
+    "category": "Modern",
+    "year_established": 2010,
+    "description": "A newly developed coastal city with modern waterfront promenades and attractions.",
+    "image": "images/attraction9.jpg"
+  },
+  {
+    "id": "att-010",
+    "name": "Badagry Slave Museum",
+    "location": "Badagry",
+    "category": "Museum",
+    "year_established": 1863,
+    "description": "Historical site documenting the transatlantic slave trade and local history.",
+    "image": "images/attraction10.jpg"
+  },
+  {
+    "id": "att-011",
+    "name": "Jhalobia Gardens",
+    "location": "Surulere",
+    "category": "Park",
+    "year_established": 1988,
+    "description": "Community gardens and cultural event space with seasonal exhibitions.",
+    "image": "images/attraction11.jpg"
+  },
+  {
+    "id": "att-012",
+    "name": "National Stadium Lagos",
+    "location": "Surulere",
+    "category": "Sports",
+    "year_established": 1972,
+    "description": "Large stadium for sports and national events with historical significance.",
+    "image": "images/attraction12.jpg"
+  },
+  {
+    "id": "att-013",
+    "name": "Marina Promenade",
+    "location": "Lagos Island",
+    "category": "Scenic",
+    "year_established": 1800,
+    "description": "Historic waterfront area with markets, music, and street life.",
+    "image": "images/attraction13.jpg"
+  },
+  {
+    "id": "att-014",
+    "name": "Terra Kulture",
+    "location": "Victoria Island",
+    "category": "Gallery",
+    "year_established": 2003,
+    "description": "Cultural center with theatre, gallery spaces and language classes.",
+    "image": "images/attraction14.jpg"
+  },
+  {
+    "id": "att-015",
+    "name": "Local Market Trail",
+    "location": "Makoko",
+    "category": "Market",
+    "year_established": 1950,
+    "description": "Vibrant local markets showcasing crafts, food and traditional commerce.",
+    "image": "images/attraction15.jpg"
+  }
+]

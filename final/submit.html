@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join / Contact — Lagos Heritage Hub</title>
+  <meta name="description" content="Sign up to join Lagos Heritage Hub or send a message to the team.">
+  <meta name="author" content="Your Name">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles/styles.css">
+  <script type="module" src="scripts/main.js"></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <span class="logo">🗺️</span>
+        <span class="brand-text">Lagos Heritage Hub</span>
+      </a>
+
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="siteNav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+
+      <nav id="siteNav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="attractions.html">Attractions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="submit.html" class="active">Join / Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h1>Join / Contact</h1>
+      <p>Complete the form below to join our mailing list or send a message. The form works dynamically — no server required.</p>
+
+      <form id="joinForm" class="form-grid" novalidate>
+        <label>
+          Full name
+          <input type="text" name="name" required>
+        </label>
+
+        <label>
+          Email
+          <input type="email" name="email" required>
+        </label>
+
+        <label>
+          Interest
+          <select name="interest">
+            <option>Guided tours</option>
+            <option>Events</option>
+            <option>Membership</option>
+            <option>Other</option>
+          </select>
+        </label>
+
+        <label class="full">
+          Message
+          <textarea name="message" rows="4"></textarea>
+        </label>
+
+        <div class="full">
+          <button type="submit" class="btn">Submit</button>
+        </div>
+      </form>
+
+      <!-- Added a heading to satisfy the “Section lacks heading” warning -->
+      <section id="submissionResult" class="submission-result" aria-live="polite">
+        <h2 class="sr-only">Submission Result</h2>
+        <p>No submission yet. Fill out the form above and click Submit.</p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="yearFooter"></span> Lagos Heritage Hub</p>
+    </div>
+  </footer>
+</body>
+</html>

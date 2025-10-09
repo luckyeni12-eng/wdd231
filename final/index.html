@@ -3,74 +3,83 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Urban Garden — Grow in the City</title>
-  <meta name="description" content="Urban Garden — city-friendly plants, practical care tips, and a local plant catalog.">
+  <title>Lagos Heritage Hub — Home</title>
+  <meta name="description" content="Lagos Heritage Hub: discover Lagos' cultural and historical attractions, events, and membership.">
   <meta name="author" content="Lucky Ayei Inyang Eni">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Urban Garden — Grow in the City">
-  <meta property="og:description" content="City-friendly plants, care tips, and a catalog of 15+ balcony-friendly greens.">
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="Lagos Heritage Hub — Home">
+  <meta property="og:description" content="Discover Lagos' cultural and historical attractions, events, and membership.">
+  <meta property="og:image" content="images/og-image.jpg">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://luckyeni12-eng.github.io/wdd231/images/og-preview.jpg">
-  <meta property="og:url" content="https://luckyeni-eng.github.io/wdd231/final/index.html">
+  <meta property="og:url" content="https://luckyeni12-eng.github.io/wdd231/final/index.html">
 
-  <!-- ✅ Working favicon -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http://www.w3.org/2000/svg'%20viewBox%3D'0%200%20100%20100'%3E%3Ccircle%20cx%3D'50'%20cy%3D'50'%20r%3D'45'%20fill%3D'%234caf50'/%3E%3Cpath%20d%3D'M40%2055c5-12%2020-12%2024%200'%20stroke%3D'%23fff'%20stroke-width%3D'5'%20fill%3D'none'%20stroke-linecap%3D'round'/%3E%3C/svg%3E">
-
-  <!-- ✅ Google Fonts (no @import) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="styles/styles.css">
+
+  <!-- Load main script (module loader) -->
+  <script type="module" src="scripts/main.js"></script>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Urban Garden home">Urban Garden</a>
-      <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
-        <span class="hamburger"></span>
+      <a class="brand" href="index.html" aria-label="Lagos Heritage Hub home">
+        <span class="logo" aria-hidden="true">🗺️</span>
+        <span class="brand-text">Lagos Heritage Hub</span>
+      </a>
+
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="siteNav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="hamburger" aria-hidden="true"></span>
       </button>
-      <nav id="site-nav" class="site-nav" aria-hidden="true">
+
+      <nav id="siteNav" class="site-nav" aria-label="Main navigation">
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="plants.html">Plant Catalog</a></li>
+          <li><a href="attractions.html">Attractions</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="contact-action.html">Contact</a></li>
+          <li><a href="submit.html">Join / Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main id="main" class="container">
+  <main class="container">
     <section class="hero">
-      <h1>Urban Garden</h1>
-      <p class="lede">Small spaces, big growth. Discover city-friendly plants and care tips for your apartment garden.</p>
-      <div class="cta-row">
-        <a class="btn" href="plants.html">Browse the Catalog</a>
-        <button id="theme-toggle" class="btn alt">Toggle Theme</button>
+      <div class="hero-content">
+        <h1>Explore the Cultural Heart of Lagos</h1>
+        <p class="lead">Stories, places, events, and guides — handpicked to help you experience Lagos' living heritage.</p>
+        <p><a class="btn" href="attractions.html">Explore Attractions</a></p>
+      </div>
+      <figure class="hero-figure" aria-hidden="true">
+        <img src="images/attraction1.jpg" alt="Colorful Lagos street scene" loading="lazy" width="800" height="450">
+      </figure>
+    </section>
+
+    <section aria-labelledby="highlights" class="highlights">
+      <h2 id="highlights">Featured Highlights</h2>
+      <div id="featuredList" class="cards grid-3">
+        <!-- JS will inject 3 featured items (from the same JSON source) -->
       </div>
     </section>
 
-    <section aria-labelledby="featured-heading" class="featured">
-      <h2 id="featured-heading">Featured Plants</h2>
-      <div id="featured-grid" class="grid" aria-live="polite"></div>
-    </section>
-
-    <section class="about-preview">
-      <h2>Why Urban Gardening?</h2>
-      <p>Urban gardening improves air quality, reduces stress, and produces fresh herbs and greens within walking distance of your kitchen.</p>
+    <section class="site-plan" aria-labelledby="plan">
+      <h2 id="plan">Site Plan</h2>
+      <p>This site presents historical & modern heritage items from Lagos including attractions, events, and membership for culture enthusiasts. Data is loaded from a local JSON, displayed dynamically and stored in localStorage when favorited.</p>
+      <ul>
+        <li>Responsive design (mobile-first)</li>
+        <li>Accessible modal for item detail</li>
+        <li>Local JSON data & Fetch API with robust error handling</li>
+      </ul>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>&copy; <span id="year"></span> Urban Garden — <a href="about.html">Attributions</a></p>
-      <nav aria-label="footer">
-        <a href="plants.html">Catalog</a> | <a href="contact-action.html">Contact</a>
-      </nav>
+      <p>&copy; <span id="year"></span> Lagos Heritage Hub | <a href="submit.html">Membership / Contact</a></p>
+      <p><a href="https://youtu.be/your-video-id" target="_blank" rel="noopener">Project video demonstration</a></p>
+      <p><a href="about.html#attributions">Attributions</a></p>
     </div>
   </footer>
-
-  <div id="modal-root" aria-hidden="true"></div>
-  <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

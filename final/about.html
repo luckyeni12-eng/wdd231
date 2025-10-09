@@ -3,49 +3,73 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About — Urban Garden</title>
-  <meta name="description" content="About Urban Garden — mission, attributions, and resources.">
-  <meta property="og:image" content="https://luckyjohn.github.io/wdd231/images/og-preview.jpg">
-  <meta property="og:url" content="https://luckyjohn.github.io/wdd231/final/about.html">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ccircle%20cx='50'%20cy='50'%20r='45'%20fill='%234caf50'/%3E%3Cpath%20d='M40%2055c5-12%2020-12%2024%200'%20stroke='%23fff'%20stroke-width='5'%20fill='none'%20stroke-linecap='round'/%3E%3C/svg%3E">
+  <title>About — Lagos Heritage Hub</title>
+  <meta name="description" content="About Lagos Heritage Hub: mission, design, and attributions.">
+  <meta name="author" content="Lucky Ayei Inyang Eni">
+
+  <meta property="og:title" content="About — Lagos Heritage Hub">
+  <meta property="og:description" content="About Lagos Heritage Hub: mission, design, and attributions.">
+  <meta property="og:image" content="images/og-image.jpg">
+
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="styles/styles.css">
+  <script type="module" src="scripts/main.js"></script>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html">Urban Garden</a>
-      <button id="nav-toggle-3" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-3" aria-label="Toggle navigation">
-        <span class="hamburger"></span>
+      <a class="brand" href="index.html" aria-label="Lagos Heritage Hub home">
+        <span class="logo">🗺️</span>
+        <span class="brand-text">Lagos Heritage Hub</span>
+      </a>
+
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="siteNav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="hamburger" aria-hidden="true"></span>
       </button>
-      <nav id="site-nav-3" class="site-nav" aria-hidden="true">
+
+      <nav id="siteNav" class="site-nav" aria-label="Main navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="plants.html">Plant Catalog</a></li>
-          <li><a class="active" href="about.html">About</a></li>
-          <li><a href="contact-action.html">Contact</a></li>
+          <li><a href="attractions.html">Attractions</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="submit.html">Join / Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="container about-page">
-    <h1>About Urban Garden</h1>
-    <p>Urban Garden is a demo project showcasing responsive design, accessibility, and modular JavaScript for a dynamic site.</p>
+  <main class="container">
+    <article>
+      <h1>About Lagos Heritage Hub</h1>
+      <p>
+        Lagos Heritage Hub is a student project showcasing cultural and historical places across Lagos.
+        The site demonstrates responsive design, accessible components, client-side data handling with
+        JavaScript ES Modules, localStorage, and dynamic DOM manipulation.
+      </p>
 
-    <h2>Attributions</h2>
-    <ul>
-      <li>Plant data created for demo use only.</li>
-      <li>Icons and images licensed for educational use.</li>
-    </ul>
+      <h2 id="attributions">Attributions</h2>
+      <p>Images, historical data and copy used on this site should be properly attributed. Example resources:</p>
+      <ul>
+        <li>Public domain images and local photographers (add details here)</li>
+        <li>Wikipedia for historical references</li>
+        <li>Local archives and oral history sources</li>
+      </ul>
 
-    <p>Contact us via the <a href="contact-action.html">contact form</a>.</p>
+      <h2>Project Plan</h2>
+      <p>
+        This project uses a local data file <code>data/attractions.json</code>, separate CSS and JS, and
+        follows semantic HTML and accessibility best practices.
+      </p>
+    </article>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>&copy; <span id="year3"></span> Urban Garden</p>
+      <p>&copy; <span id="year"></span> Lagos Heritage Hub |
+        <a href="https://youtu.be/your-video-id">Video demo</a>
+      </p>
     </div>
   </footer>
-  <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

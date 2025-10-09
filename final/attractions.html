@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attractions — Lagos Heritage Hub</title>
+  <meta name="description" content="List of Lagos heritage attractions and cultural sites with details, images, and filters.">
+  <meta name="author" content="Your Name">
+
+  <meta property="og:title" content="Attractions — Lagos Heritage Hub">
+  <meta property="og:description" content="List of Lagos heritage attractions and cultural sites.">
+  <meta property="og:image" content="images/og-image.jpg">
+
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles/styles.css">
+  <!-- Use only type=module OR defer -->
+  <script type="module" src="scripts/main.js"></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Lagos Heritage Hub home">
+        <span class="logo">🗺️</span>
+        <span class="brand-text">Lagos Heritage Hub</span>
+      </a>
+
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="siteNav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+
+      <nav id="siteNav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="attractions.html" class="active">Attractions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="submit.html">Join / Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <h1>Attractions</h1>
+      <div class="controls-row">
+        <label>
+          Search:
+          <input type="search" id="search" placeholder="Search by name or location">
+        </label>
+
+        <label>
+          Category:
+          <select id="categoryFilter">
+            <option value="">All</option>
+          </select>
+        </label>
+
+        <label>
+          Sort:
+          <select id="sortSelect">
+            <option value="name">Name (A–Z)</option>
+            <option value="year">Year Established (oldest)</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery grid-3" aria-live="polite" aria-label="Attractions list">
+      <!-- gallery items will be injected here -->
+    </section>
+
+    <!-- Accessible modal for item details -->
+    <div id="detailModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle">
+      <div class="modal-content" role="document">
+        <button id="modalClose" class="modal-close" aria-label="Close dialog">&times;</button>
+        <h2 id="modalTitle">Attraction Details</h2>
+        <img id="modalImage" src="images/placeholder.jpg" alt="Attraction image" loading="lazy" width="800" height="450">
+        <div id="modalBody"></div>
+        <div class="modal-actions">
+          <button id="favToggle" class="btn">Add to Favorites</button>
+        </div>
+      </div>
+      <div class="modal-backdrop" data-backdrop></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="yearFooter"></span> Lagos Heritage Hub</p>
+      <p><a href="index.html#plan">Site Plan</a> • <a href="about.html#attributions">Attributions</a></p>
+    </div>
+  </footer>
+</body>
+</html>
