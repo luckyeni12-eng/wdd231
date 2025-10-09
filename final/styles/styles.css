@@ -1,4 +1,8 @@
-/* styles.css - Cleaned and corrected */
+/* styles.css – Final Corrected and Completed */
+
+/* ===============================
+   Root Variables & Global Styles
+=============================== */
 :root {
   --bg: #ffffff;
   --text: #222;
@@ -17,23 +21,32 @@
   --card: #0b1220;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
-/* General Layout */
+/* ===============================
+   General Layout
+=============================== */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 1rem;
 }
 
-/* Header */
+/* ===============================
+   Header
+=============================== */
 .site-header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   background: var(--card);
@@ -55,16 +68,39 @@ body {
   font-size: 1.3rem;
 }
 
-/* Navigation */
-.nav-toggle { display: none; background: none; border: none; }
+/* ===============================
+   Navigation
+=============================== */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+}
+
 .hamburger {
-  width: 24px; height: 2px; background: var(--text); position: relative;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  position: relative;
 }
-.hamburger::before, .hamburger::after {
-  content: ""; position: absolute; left: 0; width: 24px; height: 2px; background: var(--text);
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
 }
-.hamburger::before { top: -7px; }
-.hamburger::after { top: 7px; }
+
+.hamburger::before {
+  top: -7px;
+}
+
+.hamburger::after {
+  top: 7px;
+}
 
 .site-nav ul {
   list-style: none;
@@ -79,19 +115,99 @@ body {
   border-radius: 6px;
   color: var(--text);
 }
-.site-nav a:hover, .site-nav a.active { background: var(--card); }
 
-/* Hero + Featured */
-.hero { text-align: center; padding: 2rem 0; }
-.featured { margin-top: 2rem; }
-.about-preview { background: var(--card); padding: 1rem; border-radius: 10px; margin-top: 2rem; }
+.site-nav a:hover,
+.site-nav a.active {
+  background: var(--card);
+}
 
-/* Grid & Cards */
+/* ===============================
+   Hero Section
+=============================== */
+.hero {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  background: linear-gradient(180deg, var(--card), transparent);
+}
+
+.hero h1 {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+/* ✅ lede paragraph */
+.lede {
+  max-width: 600px;
+  margin: 0.5rem auto 1.5rem;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+/* ✅ cta-row container */
+.cta-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ✅ Button base */
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background: #43a047;
+  transform: translateY(-2px);
+}
+
+/* ✅ Alternate (outline) button */
+.btn.alt {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.btn.alt:hover,
+.btn.alt:focus {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ===============================
+   Featured / About Preview
+=============================== */
+.featured {
+  margin-top: 2rem;
+}
+
+.about-preview {
+  background: var(--card);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+/* ===============================
+   Grid & Cards
+=============================== */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
 }
+
 .card {
   background: var(--card);
   border-radius: 10px;
@@ -101,6 +217,7 @@ body {
   gap: 0.5rem;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.05);
 }
+
 .card img {
   width: 100%;
   height: 160px;
@@ -108,30 +225,74 @@ body {
   border-radius: 8px;
 }
 
-/* Lazy Load Blur */
+/* ===============================
+   Lazy Loading Blur Effect
+=============================== */
 img[loading="lazy"] {
   filter: blur(3px);
   transition: filter 0.3s ease-out;
 }
+
 img[loading="lazy"].loaded {
   filter: blur(0);
 }
 
-/* Footer */
+/* ===============================
+   Footer
+=============================== */
 .site-footer {
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   margin-top: 2rem;
   padding: 1rem 0;
+  background: var(--card);
 }
+
 .footer-inner {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
+  gap: 1rem;
 }
 
-/* Responsive Navigation */
+.footer-inner a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer-inner a:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   Forms (Contact Page)
+=============================== */
+.contact-form,
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea,
+.filter-form input,
+.filter-form select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* ===============================
+   Responsive Navigation
+=============================== */
 @media (max-width: 768px) {
-  .nav-toggle { display: block; }
+  .nav-toggle {
+    display: block;
+  }
+
   .site-nav {
     position: absolute;
     top: 64px;
@@ -141,6 +302,18 @@ img[loading="lazy"].loaded {
     display: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
-  .site-nav[aria-hidden="false"] { display: block; }
-  .site-nav ul { flex-direction: column; align-items: center; }
+
+  .site-nav[aria-hidden="false"] {
+    display: block;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .cta-row {
+    flex-direction: column;
+  }
 }
