@@ -7,8 +7,14 @@
   <meta name="description" content="Sign up to join Lagos Heritage Hub or send a message to the team.">
   <meta name="author" content="Lucky Ayei Inyang Eni">
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Join / Contact — Lagos Heritage Hub">
+  <meta property="og:description" content="Sign up to join Lagos Heritage Hub or send a message.">
+  <meta property="og:image" content="https://luckyeni12-eng.github.io/wdd231/final/images/og-image.jpg">
+  <meta property="og:url" content="https://luckyeni12-eng.github.io/wdd231/final/submit.html">
+
   <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://luckyeni12-eng.github.io/wdd231/final/images/favicon.ico" type="image/x-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -26,11 +32,11 @@
         <span class="logo">🗺️</span>
         <span class="brand-text">Lagos Heritage Hub</span>
       </a>
-      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="siteNav">
+      <button id="navToggle" class="nav-toggle">
         <span class="sr-only">Toggle navigation</span>
-        <span class="hamburger" aria-hidden="true"></span>
+        <span class="hamburger"></span>
       </button>
-      <nav id="siteNav" class="site-nav" aria-label="Main navigation">
+      <nav id="siteNav" class="site-nav">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="attractions.html">Attractions</a></li>
@@ -47,9 +53,9 @@
       <p>Complete the form below to join our mailing list or send a message.</p>
 
       <form id="joinForm" class="form-grid" novalidate>
-        <label> Full name <input type="text" name="name" required></label>
-        <label> Email <input type="email" name="email" required></label>
-        <label> Interest
+        <label>Full name <input type="text" name="name" required></label>
+        <label>Email <input type="email" name="email" required></label>
+        <label>Interest
           <select name="interest">
             <option>Guided tours</option>
             <option>Events</option>
@@ -57,14 +63,9 @@
             <option>Other</option>
           </select>
         </label>
-        <label class="full"> Message <textarea name="message" rows="4"></textarea></label>
+        <label class="full">Message <textarea name="message" rows="4"></textarea></label>
         <div class="full"><button type="submit" class="btn">Submit</button></div>
       </form>
-
-      <section id="submissionResult" class="submission-result" aria-live="polite">
-        <h2 class="sr-only">Submission Result</h2>
-        <p>No submission yet. Fill out the form above and click Submit.</p>
-      </section>
     </section>
   </main>
 

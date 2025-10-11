@@ -10,10 +10,11 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Attractions — Lagos Heritage Hub">
   <meta property="og:description" content="List of Lagos heritage attractions and cultural sites.">
-  <meta property="og:image" content="images/og-image.jpg">
+  <meta property="og:image" content="https://luckyeni12-eng.github.io/wdd231/final/images/og-image.jpg">
+  <meta property="og:url" content="https://luckyeni12-eng.github.io/wdd231/final/attractions.html">
 
   <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://luckyeni12-eng.github.io/wdd231/final/images/favicon.ico" type="image/x-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -27,15 +28,15 @@
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Lagos Heritage Hub home">
+      <a class="brand" href="index.html">
         <span class="logo">🗺️</span>
         <span class="brand-text">Lagos Heritage Hub</span>
       </a>
-      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="siteNav">
+      <button id="navToggle" class="nav-toggle">
         <span class="sr-only">Toggle navigation</span>
-        <span class="hamburger" aria-hidden="true"></span>
+        <span class="hamburger"></span>
       </button>
-      <nav id="siteNav" class="site-nav" aria-label="Main navigation">
+      <nav id="siteNav" class="site-nav">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="attractions.html" class="active">Attractions</a></li>
@@ -50,29 +51,16 @@
     <section class="controls">
       <h1>Attractions</h1>
       <div class="controls-row">
-        <label> Search: <input type="search" id="search" placeholder="Search by name or location"> </label>
-        <label> Category: <select id="categoryFilter"><option value="">All</option></select> </label>
-        <label> Sort: <select id="sortSelect">
+        <label>Search: <input type="search" id="search" placeholder="Search by name or location"></label>
+        <label>Category: <select id="categoryFilter"><option value="">All</option></select></label>
+        <label>Sort: <select id="sortSelect">
           <option value="name">Name (A–Z)</option>
-          <option value="year">Year Established (oldest)</option>
+          <option value="year">Year Established</option>
         </select></label>
       </div>
     </section>
 
-    <section id="gallery" class="gallery grid-3" aria-live="polite" aria-label="Attractions list"></section>
-
-    <div id="detailModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle">
-      <div class="modal-content" role="document">
-        <button id="modalClose" class="modal-close" aria-label="Close dialog">&times;</button>
-        <h2 id="modalTitle">Attraction Details</h2>
-        <img id="modalImage" src="images/placeholder.jpg" alt="Attraction image" loading="lazy" width="800" height="450">
-        <div id="modalBody"></div>
-        <div class="modal-actions">
-          <button id="favToggle" class="btn">Add to Favorites</button>
-        </div>
-      </div>
-      <div class="modal-backdrop" data-backdrop></div>
-    </div>
+    <section id="gallery" class="gallery grid-3"></section>
   </main>
 
   <footer class="site-footer">
