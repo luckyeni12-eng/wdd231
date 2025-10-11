@@ -8,15 +8,17 @@
   <meta name="author" content="Lucky Ayei Inyang Eni">
 
   <!-- Favicon -->
-  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
+  <!-- Styles -->
   <link rel="stylesheet" href="styles/styles.css">
+
+  <!-- JS -->
   <script type="module" src="scripts/main.js"></script>
 </head>
-
 <body>
   <header class="site-header">
     <div class="container header-inner">
@@ -24,12 +26,10 @@
         <span class="logo">🗺️</span>
         <span class="brand-text">Lagos Heritage Hub</span>
       </a>
-
       <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="siteNav">
         <span class="sr-only">Toggle navigation</span>
         <span class="hamburger" aria-hidden="true"></span>
       </button>
-
       <nav id="siteNav" class="site-nav" aria-label="Main navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -44,21 +44,12 @@
   <main class="container">
     <section>
       <h1>Join / Contact</h1>
-      <p>Complete the form below to join our mailing list or send a message. The form works dynamically — no server required.</p>
+      <p>Complete the form below to join our mailing list or send a message.</p>
 
       <form id="joinForm" class="form-grid" novalidate>
-        <label>
-          Full name
-          <input type="text" name="name" required>
-        </label>
-
-        <label>
-          Email
-          <input type="email" name="email" required>
-        </label>
-
-        <label>
-          Interest
+        <label> Full name <input type="text" name="name" required></label>
+        <label> Email <input type="email" name="email" required></label>
+        <label> Interest
           <select name="interest">
             <option>Guided tours</option>
             <option>Events</option>
@@ -66,15 +57,8 @@
             <option>Other</option>
           </select>
         </label>
-
-        <label class="full">
-          Message
-          <textarea name="message" rows="4"></textarea>
-        </label>
-
-        <div class="full">
-          <button type="submit" class="btn">Submit</button>
-        </div>
+        <label class="full"> Message <textarea name="message" rows="4"></textarea></label>
+        <div class="full"><button type="submit" class="btn">Submit</button></div>
       </form>
 
       <section id="submissionResult" class="submission-result" aria-live="polite">

@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://luckyeni12-eng.github.io/wdd231/final/index.html">
 
   <!-- Favicon -->
-  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles/styles.css">
 
-  <!-- Load main script (module loader) -->
+  <!-- JS -->
   <script type="module" src="scripts/main.js"></script>
 </head>
 <body>
@@ -33,12 +33,10 @@
         <span class="logo" aria-hidden="true">🗺️</span>
         <span class="brand-text">Lagos Heritage Hub</span>
       </a>
-
       <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="siteNav">
         <span class="sr-only">Toggle navigation</span>
         <span class="hamburger" aria-hidden="true"></span>
       </button>
-
       <nav id="siteNav" class="site-nav" aria-label="Main navigation">
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
@@ -64,14 +62,12 @@
 
     <section aria-labelledby="highlights" class="highlights">
       <h2 id="highlights">Featured Highlights</h2>
-      <div id="featuredList" class="cards grid-3">
-        <!-- JS will inject 3 featured items (from the same JSON source) -->
-      </div>
+      <div id="featuredList" class="cards grid-3"></div>
     </section>
 
     <section class="site-plan" aria-labelledby="plan">
       <h2 id="plan">Site Plan</h2>
-      <p>This site presents historical & modern heritage items from Lagos including attractions, events, and membership for culture enthusiasts. Data is loaded from a local JSON, displayed dynamically and stored in localStorage when favorited.</p>
+      <p>This site presents historical & modern heritage items from Lagos including attractions, events, and membership for culture enthusiasts.</p>
       <ul>
         <li>Responsive design (mobile-first)</li>
         <li>Accessible modal for item detail</li>
